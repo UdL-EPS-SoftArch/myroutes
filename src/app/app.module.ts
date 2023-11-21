@@ -26,6 +26,7 @@ import {UserService} from './user/user.service';
 import { CoordinateListComponent } from './coordinate/coordinate-list/coordinate-list.component';
 import { CoordinateRoutingModule } from './coordinate/coordinate-routing.module';
 import { CoordinateCreateComponent } from './coordinate/coordinate-create/coordinate-create.component';
+import { CoordinateUpdateComponent } from './coordinate/coordinate-update/coordinate-update.component';
 import { CoordinateDetailComponent } from './coordinate/coordinate-detail/coordinate-detail.component';
 import { CoordinateDeleteComponent } from './coordinate/coordinate-delete/coordinate-delete.component';
 import { CoordinateSearchComponent } from './coordinate/coordinate-search/coordinate-search.component';
@@ -42,7 +43,12 @@ import { CoordinateSearchComponent } from './coordinate/coordinate-search/coordi
     UserEditComponent,
     UserDeleteComponent,
     UserSearchComponent,
-    CoordinateListComponent
+    CoordinateListComponent,
+    CoordinateCreateComponent,
+    CoordinateUpdateComponent,
+    CoordinateDetailComponent,
+    CoordinateDeleteComponent,
+    CoordinateSearchComponent
   ],
   imports: [
     BrowserModule,
