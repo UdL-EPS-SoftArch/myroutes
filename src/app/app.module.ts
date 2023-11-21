@@ -25,6 +25,7 @@ import {LoggedInGuard} from './login-basic/loggedin.guard';
 import {UserService} from './user/user.service';
 import { CoordinateListComponent } from './coordinate/coordinate-list/coordinate-list.component';
 import { CoordinateRoutingModule } from './coordinate/coordinate-routing.module';
+import { CoordinateCreateComponent } from './coordinate/coordinate-create/coordinate-create.component';
 
 @NgModule({
   declarations: [
