@@ -47,7 +47,6 @@ export class RoutesCreateComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.routes)
     this.routes.createdBy = this.authenticationService.getCurrentUser();
     //this.route.creationDate = new Date();
     this.http.get<User>(`${this.defaultRoute('users/')}${this.routes.createdBy.id}`).subscribe(data => {

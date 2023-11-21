@@ -23,7 +23,10 @@ import {HttpErrorInterceptor} from './error-handler/http-error-interceptor';
 import {AuthenticationBasicService} from './login-basic/authentication-basic.service';
 import {LoggedInGuard} from './login-basic/loggedin.guard';
 import {UserService} from './user/user.service';
-import {RoutesCreateComponent} from "./routes/create/routes-create.component";
+import {RoutesCreateComponent} from "./routes/routes-create/routes-create.component";
+import { RoutesListComponent } from './routes/routes-list/routes-list.component';
+import { AlertComponent } from './widgets/alert/alert.component';
+
 
 @NgModule({
   declarations: [
@@ -37,7 +40,10 @@ import {RoutesCreateComponent} from "./routes/create/routes-create.component";
     UserEditComponent,
     UserDeleteComponent,
     UserSearchComponent,
-    RoutesCreateComponent
+    RoutesCreateComponent,
+    RoutesListComponent,
+    AlertComponent
+
   ],
   imports: [
     BrowserModule,

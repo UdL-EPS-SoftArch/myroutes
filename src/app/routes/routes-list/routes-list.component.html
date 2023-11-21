@@ -1,0 +1,32 @@
+<div class="card mb-4" *ngFor="let route of routes">
+  <div class="card-block">
+    <!--<h4 class="card-title col-md-12 p-3">{{route?.uri}}</h4>-->
+    <div class="card-body row m-1">
+      <div class="col-md-4 p-3">
+        <h6 class="card-subtitle text-muted">CreatedBy</h6>
+        <p class="card-text">{{route.createdBy?.id}}</p>
+      </div>
+      <div class="col-md-4 p-3">
+        <h6 class="card-subtitle text-muted">Title</h6>
+        <p class="card-text">{{route.title}}</p>
+      </div>
+      <div class="col-md-4 p-3">
+        <h6 class="card-subtitle text-muted">Description</h6>
+        <p class="card-text">{{route.description}}</p>
+      </div>
+      <div class="col-md-4 p-3">
+        <h6 class="card-subtitle text-muted">Creation date</h6>
+        <p class="card-text">{{route.creationDate | date: 'dd/MM/yyyy HH:mm:ss'}}</p>
+      </div>
+      <div class="col-md-4 p-3">
+        <h6 class="card-subtitle text-muted">Type</h6>
+        <p class="card-text">{{route.type}}</p>
+      </div>
+    </div>
+    <div class="card-footer text-right">
+      <button id="listBtn1" type="button" [routerLink]="['/routes']"
+              class="btn m-1 btn-outline-primary">Routes List
+      </button>
+    </div>
+  </div>
+</div>
