@@ -9,6 +9,7 @@ import { query } from '@angular/animations';
 import { User } from 'src/app/login-basic/user';
 import { AuthenticationBasicService } from 'src/app/login-basic/authentication-basic.service';
 import { ThisReceiver } from '@angular/compiler';
+import {routes} from "../../login-basic/login-basic.routing";
 
 @Component({
   selector: 'app-list',
@@ -33,21 +34,23 @@ export class RoutesListComponent implements OnInit {
   ngOnInit(): void {
     this.routesService.getPage({ pageParams: { size: this.pageSize }, sort: { username: 'ASC' } }).subscribe(
       (page: PagedResourceCollection<Routes>) => {
-        this.routes = page.resources;
-        this.totalRoutes = page.totalElements;
-        this.routesPagedResource = page;
-
-
+      this.routes = page.resources;
+      this.totalRoutes = page.totalElements;
+      this.routesPagedResource = page;
         this.routes.map(routes => {
-          routes.getRelation('createdBy').subscribe((user: User) => {
-            routes.createdBy = user;
-          });
+          routes.getRelation('createdBy')
+            .subscribe((user: User) => {
+              routes.createdBy = user;
+            });
         });
-      });
+    });
+    console.log(routes);
   }
 
   changePage(): void {
-    this.routesPagedResource.customPage({pageParams: {page: this.page - 1, size: this.pageSize}, sort: {name: 'ASC'}}).subscribe(
+    this.routesPagedResource.customPage(
+      {pageParams: {page: this.page - 1, size: this.pageSize},
+      sort: {name: 'ASC'}}).subscribe(
       (page: PagedResourceCollection<Routes>) => {
         this.routes = page.resources;
       });

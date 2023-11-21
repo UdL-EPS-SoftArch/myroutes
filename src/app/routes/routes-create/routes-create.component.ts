@@ -64,7 +64,7 @@ export class RoutesCreateComponent implements OnInit {
   }
 
   defaultRoute(endpoint: string): string {
-    return `http://192.168.1.95:8080/${endpoint}`;
-    //return `http://localhost:8080/${endpoint}`;
+    //return `http://192.168.1.95:8080/${endpoint}`;
+    return `http://localhost:8080/${endpoint}`;
   }
 }
