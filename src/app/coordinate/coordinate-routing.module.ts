@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
 import {CoordinateListComponent} from "./coordinate-list/coordinate-list.component";
 
 
 const routes: Routes = [
-  { path: 'coordinates/list', component: CoordinateListComponent},
+  {path: 'coordinates/list', component: CoordinateListComponent},
 ];
 
 
@@ -12,4 +12,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class CoordinateRoutingModule { }
+export class CoordinateRoutingModule {
+}

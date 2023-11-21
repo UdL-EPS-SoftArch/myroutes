@@ -1,9 +1,10 @@
-import { HateoasResource, Resource } from '@lagoshny/ngx-hateoas-client';
+import {HateoasResource, Resource} from '@lagoshny/ngx-hateoas-client';
 
 @HateoasResource('coordinates')
 export class Coordinate extends Resource {
   id: number
   coordinate: string
+
   // routeVersion: RouteVersion
 
   constructor(values: object = {}) {
