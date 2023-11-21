@@ -25,6 +25,8 @@ import {LoggedInGuard} from './login-basic/loggedin.guard';
 import {UserService} from './user/user.service';
 import {RoutesCreateComponent} from "./routes/routes-create/routes-create.component";
 import { RoutesListComponent } from './routes/routes-list/routes-list.component';
+import { RoutesDetailComponent } from './routes/routes-detail/routes-detail.component';
+
 import { AlertComponent } from './widgets/alert/alert.component';
 
 
@@ -42,6 +44,7 @@ import { AlertComponent } from './widgets/alert/alert.component';
     UserSearchComponent,
     RoutesCreateComponent,
     RoutesListComponent,
+    RoutesDetailComponent,
     AlertComponent
 
   ],
