@@ -24,6 +24,7 @@ import {AuthenticationBasicService} from './login-basic/authentication-basic.ser
 import {LoggedInGuard} from './login-basic/loggedin.guard';
 import {UserService} from './user/user.service';
 import { CoordinateListComponent } from './coordinate/coordinate-list/coordinate-list.component';
+import { CoordinateRoutingModule } from './coordinate/coordinate-routing.module';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { CoordinateListComponent } from './coordinate/coordinate-list/coordinate
     ErrorHandlerModule,
     NgbModule,
     ReactiveFormsModule,
+    CoordinateRoutingModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
