@@ -23,6 +23,7 @@ import {HttpErrorInterceptor} from './error-handler/http-error-interceptor';
 import {AuthenticationBasicService} from './login-basic/authentication-basic.service';
 import {LoggedInGuard} from './login-basic/loggedin.guard';
 import {UserService} from './user/user.service';
+import { CoordinateListComponent } from './coordinate/coordinate-list/coordinate-list.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {UserService} from './user/user.service';
     UserRegisterComponent,
     UserEditComponent,
     UserDeleteComponent,
-    UserSearchComponent
+    UserSearchComponent,
+    CoordinateListComponent
   ],
   imports: [
     BrowserModule,
