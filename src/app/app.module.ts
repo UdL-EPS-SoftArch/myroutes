@@ -28,6 +28,7 @@ import { CoordinateRoutingModule } from './coordinate/coordinate-routing.module'
 import { CoordinateCreateComponent } from './coordinate/coordinate-create/coordinate-create.component';
 import { CoordinateDetailComponent } from './coordinate/coordinate-detail/coordinate-detail.component';
 import { CoordinateDeleteComponent } from './coordinate/coordinate-delete/coordinate-delete.component';
+import { CoordinateSearchComponent } from './coordinate/coordinate-search/coordinate-search.component';
 
 @NgModule({
   declarations: [
