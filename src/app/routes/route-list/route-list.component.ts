@@ -73,4 +73,9 @@ export class RouteListComponent implements OnInit {
   currentUserEdit(username: string){
     return this.getCurrentUserName() == username;
   }
+
+  detail(route: Route): void {
+    console.log(route.id);
+    this.router.navigate([route.uri]);
+  }
 }

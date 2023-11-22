@@ -29,6 +29,7 @@ import { RouteListComponent } from './routes/route-list/route-list.component';
 import { RouteDetailComponent } from './routes/route-detail/route-detail.component';
 import { RouteEditComponent } from './routes/routes-edit/route-edit.component';
 import { RouteDeleteComponent } from './routes/route-delete/route-delete.component';
+import { RouteSearchComponent } from './routes/route-search/route-search.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { RouteDeleteComponent } from './routes/route-delete/route-delete.compone
     RouteListComponent,
     RouteDetailComponent,
     RouteEditComponent,
-    RouteDeleteComponent
+    RouteDeleteComponent,
+    RouteSearchComponent
 
 
   ],
