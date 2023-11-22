@@ -1,44 +1,43 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {RoutesService} from "../routes.service";
+import {RouteService} from "../route.service";
 import {AuthenticationBasicService} from "../../login-basic/authentication-basic.service";
 import {User} from "../../login-basic/user";
 import {switchMap} from "rxjs/operators";
-import {Routes} from "../routes";
+import {Route} from "../route";
 
 @Component({
   selector: 'app-routes-detail',
-  templateUrl: './routes-detail.component.html',
-  styleUrls: ['./routes-detail.component.css']
+  templateUrl: './route-detail.component.html',
+  styleUrls: ['./route-detail.component.css']
 })
-export class RoutesDetailComponent implements OnInit {
-  public routes: Routes = new Routes();
+export class RouteDetailComponent implements OnInit {
+  public route: Route = new Route();
   public pageSize = 5;
   public page = 1;
 
   constructor(
     public router: Router,
-    private route: ActivatedRoute,
-    private routesService: RoutesService,
+    private activatedRoute: ActivatedRoute,
+    private routesService: RouteService,
     private authenticationService: AuthenticationBasicService) {
   }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
 
     this.routesService.getResource(id).pipe(
       switchMap(r => {
-        this.routes = r;
-        return this.routes.getRelation<User>('createdBy');
+        this.route = r;
+        return this.route.getRelation<User>('createdBy');
       }),
       switchMap((user: User) => {
-        this.routes.createdBy = user;
-        return this.routes.getRelation<User>('createdBy');
+        this.route.createdBy = user;
+        return this.route.getRelation<User>('createdBy');
       })
     ).subscribe(user => {
-      this.routes.createdBy = user;
+      this.route.createdBy = user;
     });
-
   }
 
   isRole(role: string): boolean {
@@ -50,7 +49,7 @@ export class RoutesDetailComponent implements OnInit {
   }
 
   currentUserEdit(){
-    return this.getCurrentUserName() == this.routes.createdBy.id;
+    return this.getCurrentUserName() == this.route.createdBy.id;
   }
 
 }

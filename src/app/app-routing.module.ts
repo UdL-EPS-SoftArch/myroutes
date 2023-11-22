@@ -9,11 +9,13 @@ import { UserRegisterComponent } from './user/user-register/user-register.compon
 import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { UserDeleteComponent } from './user/user-delete/user-delete.component';
 
-import { RoutesListComponent } from './routes/routes-list/routes-list.component';
-/*import { RoutesUpdateComponent } from './routes/routes-edit/routes-edit.component';
-import { RoutesDeleteComponent } from './routes/delete/routes-delete.component';*/
-import { RoutesCreateComponent } from './routes/routes-create/routes-create.component';
-import { RoutesDetailComponent } from './routes/routes-detail/routes-detail.component';
+
+
+//import { RouteDeleteComponent } from './routes/delete/routes-delete.component';
+import { RouteListComponent } from './routes/route-list/route-list.component';
+import { RouteCreateComponent } from './routes/route-create/route-create.component';
+import { RouteDetailComponent } from './routes/route-detail/route-detail.component';
+import { RouteEditComponent } from './routes/routes-edit/route-edit.component';
 
 const routes: Routes = [
   { path: 'users/create', component: UserRegisterComponent},
@@ -22,11 +24,11 @@ const routes: Routes = [
   { path: 'users/:id', component: UserDetailComponent, canActivate: [LoggedInGuard]},
   { path: 'users', component: UserListComponent, canActivate: [LoggedInGuard]},
 
-  { path: 'routes/create', component: RoutesCreateComponent, canActivate: [LoggedInGuard] },
-  //{ path: 'routes/:id/delete', component: UserDeleteComponent, canActivate: [LoggedInGuard]},
-  //{ path: 'routes/:id/edit', component: UserEditComponent, canActivate: [LoggedInGuard]},
-  { path: 'routes/:id', component: RoutesDetailComponent, canActivate: [LoggedInGuard]},
-  { path: 'routes', component: RoutesListComponent, canActivate: [LoggedInGuard] },
+  { path: 'routes/create', component: RouteCreateComponent, canActivate: [LoggedInGuard] },
+  //{ path: 'routes/:id/delete', component: RouteDeleteComponent, canActivate: [LoggedInGuard]},
+  { path: 'routes/:id/edit', component: RouteEditComponent, canActivate: [LoggedInGuard]},
+  { path: 'routes/:id', component: RouteDetailComponent, canActivate: [LoggedInGuard]},
+  { path: 'routes', component: RouteListComponent, canActivate: [LoggedInGuard] },
 
   { path: 'about', component: AboutComponent},
   { path: '404', component: NotFoundComponent},

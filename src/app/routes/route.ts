@@ -2,7 +2,7 @@ import { HateoasResource, Resource } from '@lagoshny/ngx-hateoas-client';
 import { User } from '../login-basic/user';
 
 @HateoasResource('routes')
-export class Routes extends Resource {
+export class Route extends Resource {
   id: string;
   title: string
   description?: string

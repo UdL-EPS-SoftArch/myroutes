@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="card col-12">
+  <div class="card col-lg-4 col-md-6 col-sm-12 col-xs-12" *ngFor="let route of routes">
     <div class="card-block">
       <h5 class="card-header text-center">
         Route
@@ -8,31 +8,34 @@
       <div class="card-body row m-1">
         <div class="col-md-6 p-3">
           <h6 class="card-subtitle text-muted">CreatedBy</h6>
-          <p class="card-text">{{routes.createdBy.username}}</p>
+          <p class="card-text">{{route.createdBy?.username}}</p>
         </div>
         <div class="col-md-6 p-3">
           <h6 class="card-subtitle text-muted">Creation date</h6>
-          <p class="card-text">{{routes.creationDate | date: 'dd/MM/yyyy HH:mm:ss'}}</p>
+          <p class="card-text">{{route.creationDate | date: 'dd/MM/yyyy HH:mm:ss'}}</p>
         </div>
         <div class="col-md-4 p-3">
           <h6 class="card-subtitle text-muted">Title</h6>
-          <p class="card-text">{{routes.title}}</p>
+          <p class="card-text">{{route.title}}</p>
         </div>
         <div class="col-md-4 p-3">
           <h6 class="card-subtitle text-muted">Type</h6>
-          <p class="card-text">{{routes.type}}</p>
+          <p class="card-text">{{route.type}}</p>
         </div>
         <div class="col-lg-4 col-md-12 p-3">
           <h6 class="card-subtitle text-muted">Description</h6>
-          <p class="card-text">{{routes.description}}</p>
+          <p class="card-text">{{route.description}}</p>
         </div>
       </div>
       <div class="card-footer text-right row">
         <div class="btn-group" role="group" aria-label="Basic example">
           <button type="button" [routerLink]="['edit']" class="btn col-6 m-1 btn-outline-success">Edit</button>
+          <button type="button" [routerLink]="[route.uri]" class="btn col-6 m-1 btn-outline-primary">Detail</button>
           <button type="button" [routerLink]="['delete']" class="btn col-6 m-1 btn-outline-danger">Delete</button>
         </div>
-      </div>
     </div>
   </div>
 </div>
+  <ngb-pagination class="d-flex justify-content-center"
+                  [(page)]="page" [pageSize]="pageSize" [collectionSize]="totalRoutes"
+                  (pageChange)="changePage()"></ngb-pagination>

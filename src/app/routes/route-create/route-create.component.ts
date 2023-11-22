@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationBasicService } from 'src/app/login-basic/authentication-basic.service';
 import { User } from 'src/app/login-basic/user';
-import { Routes } from '../routes';
-import { RoutesService } from '../routes.service';
+import { Route } from '../route';
+import { RouteService } from '../route.service';
 import { Input } from '@angular/core';
 import { UserService } from 'src/app/user/user.service';
 import { PagedResourceCollection } from '@lagoshny/ngx-hateoas-client';
@@ -11,12 +11,12 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-routes-create',
-  templateUrl: './routes-create.component.html',
-  styleUrls: ['./routes-create.component.css']
+  templateUrl: './route-create.component.html',
+  styleUrls: ['./route-create.component.css']
 })
-export class RoutesCreateComponent implements OnInit {
+export class RouteCreateComponent implements OnInit {
 
-  public route: Routes = new Routes();
+  public route: Route = new Route();
   public createdBy: User = new User();
   public title: string;
   public description: string;
@@ -30,7 +30,7 @@ export class RoutesCreateComponent implements OnInit {
 
   constructor(private router: Router,
               private authenticationService: AuthenticationBasicService,
-              private routeService: RoutesService,
+              private routeService: RouteService,
               private userService: UserService,
               private http: HttpClient) { }
 
@@ -49,7 +49,7 @@ export class RoutesCreateComponent implements OnInit {
   onSubmit(): void {
     this.route.createdBy = this.authenticationService.getCurrentUser();
     this.routeService.createResource({ body: this.route }).subscribe(
-        (route:Routes) => this.router.navigate([route.uri]));
+        (route:Route) => this.router.navigate([route.uri]));
   }
 
 

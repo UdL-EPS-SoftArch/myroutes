@@ -1,25 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { RoutesService } from '../routes.service';
-import { Routes } from '../routes';
+import { ActivatedRoute, Router } from '@angular/router';
+import { RouteService } from '../route.service';
+import { Route } from '../route';
 import { PagedResourceCollection } from '@lagoshny/ngx-hateoas-client';
-import { UserService } from 'src/app/user/user.service';
-import { Observable } from 'rxjs';
-import { query } from '@angular/animations';
 import { User } from 'src/app/login-basic/user';
 import { AuthenticationBasicService } from 'src/app/login-basic/authentication-basic.service';
-import { ThisReceiver } from '@angular/compiler';
-import {routes} from "../../login-basic/login-basic.routing";
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './routes-list.component.html',
-  styleUrls: ['./routes-list.component.css']
+  selector: 'app-routes-list',
+  templateUrl: './route-list.component.html',
+  styleUrls: ['./route-list.component.css']
 })
 
-export class RoutesListComponent implements OnInit {
-  public routesPagedResource: PagedResourceCollection<Routes>;
-  public routes: Routes[] = [];
+export class RouteListComponent implements OnInit {
+  public routesPagedResource: PagedResourceCollection<Route>;
+  public routes: Route[] = [];
   public pageSize = 5;
   public page = 1;
   public totalRoutes = 0;
@@ -27,13 +22,13 @@ export class RoutesListComponent implements OnInit {
 
   constructor(
     public router: Router,
-    private routesService: RoutesService,
+    private routesService: RouteService,
     private authenticationService: AuthenticationBasicService) {
   }
 
   ngOnInit(): void {
     this.routesService.getPage({ pageParams: { size: this.pageSize }, sort: { username: 'ASC' } }).subscribe(
-      (page: PagedResourceCollection<Routes>) => {
+      (page: PagedResourceCollection<Route>) => {
       this.routes = page.resources;
       this.totalRoutes = page.totalElements;
       this.routesPagedResource = page;
@@ -44,14 +39,13 @@ export class RoutesListComponent implements OnInit {
             });
         });
     });
-    console.log(routes);
   }
 
   changePage(): void {
     this.routesPagedResource.customPage(
       {pageParams: {page: this.page - 1, size: this.pageSize},
       sort: {name: 'ASC'}}).subscribe(
-      (page: PagedResourceCollection<Routes>) => {
+      (page: PagedResourceCollection<Route>) => {
         this.routes = page.resources;
         this.routes.map(routes => {
           routes.getRelation('createdBy')
@@ -62,7 +56,7 @@ export class RoutesListComponent implements OnInit {
       });
   }
 
-  modifyList(routesPagedResource: PagedResourceCollection<Routes>): void {
+  modifyList(routesPagedResource: PagedResourceCollection<Route>): void {
     this.routesPagedResource = routesPagedResource;
     this.routes = this.routesPagedResource.resources;
     this.totalRoutes = this.routesPagedResource.totalElements;
