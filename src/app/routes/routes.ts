@@ -9,6 +9,7 @@ export class Routes extends Resource {
   type: string
   creationDate: Date
   createdBy: User
+  uri: string
 
   constructor(values: object = {}) {
     super();

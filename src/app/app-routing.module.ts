@@ -10,10 +10,10 @@ import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { UserDeleteComponent } from './user/user-delete/user-delete.component';
 
 import { RoutesListComponent } from './routes/routes-list/routes-list.component';
-/*import { RoutesUpdateComponent } from './routes/update/routes-update.component';
-import { RoutesDeleteComponent } from './routes/delete/routes-delete.component';
-import { RoutesDetailComponent } from './routes/detail/routes-detail.component';*/
+/*import { RoutesUpdateComponent } from './routes/routes-edit/routes-edit.component';
+import { RoutesDeleteComponent } from './routes/delete/routes-delete.component';*/
 import { RoutesCreateComponent } from './routes/routes-create/routes-create.component';
+import { RoutesDetailComponent } from './routes/routes-detail/routes-detail.component';
 
 const routes: Routes = [
   { path: 'users/create', component: UserRegisterComponent},
@@ -23,6 +23,9 @@ const routes: Routes = [
   { path: 'users', component: UserListComponent, canActivate: [LoggedInGuard]},
 
   { path: 'routes/create', component: RoutesCreateComponent, canActivate: [LoggedInGuard] },
+  //{ path: 'routes/:id/delete', component: UserDeleteComponent, canActivate: [LoggedInGuard]},
+  //{ path: 'routes/:id/edit', component: UserEditComponent, canActivate: [LoggedInGuard]},
+  { path: 'routes/:id', component: RoutesDetailComponent, canActivate: [LoggedInGuard]},
   { path: 'routes', component: RoutesListComponent, canActivate: [LoggedInGuard] },
 
   { path: 'about', component: AboutComponent},

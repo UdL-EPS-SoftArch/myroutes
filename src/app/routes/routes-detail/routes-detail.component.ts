@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {RoutesService} from "../routes.service";
 import {AuthenticationBasicService} from "../../login-basic/authentication-basic.service";
+import {User} from "../../login-basic/user";
+import {switchMap} from "rxjs/operators";
+import {Routes} from "../routes";
 
 @Component({
   selector: 'app-routes-detail',
@@ -12,7 +15,6 @@ export class RoutesDetailComponent implements OnInit {
   public routes: Routes = new Routes();
   public pageSize = 5;
   public page = 1;
-  public totalRatings = 0;
 
   constructor(
     public router: Router,
@@ -27,14 +29,14 @@ export class RoutesDetailComponent implements OnInit {
     this.routesService.getResource(id).pipe(
       switchMap(r => {
         this.routes = r;
-        return this.routes.getRelation<User>('about');
+        return this.routes.getRelation<User>('createdBy');
       }),
       switchMap((user: User) => {
-        this.routes.about = user;
-        return this.routes.getRelation<User>('author');
+        this.routes.createdBy = user;
+        return this.routes.getRelation<User>('createdBy');
       })
     ).subscribe(user => {
-      this.routes.author = user;
+      this.routes.createdBy = user;
     });
 
   }
@@ -48,7 +50,7 @@ export class RoutesDetailComponent implements OnInit {
   }
 
   currentUserEdit(){
-    return this.getCurrentUserName() == this.routes.author.id;
+    return this.getCurrentUserName() == this.routes.createdBy.id;
   }
 
 }

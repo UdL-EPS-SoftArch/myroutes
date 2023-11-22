@@ -16,7 +16,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 })
 export class RoutesCreateComponent implements OnInit {
 
-  public routes: Routes = new Routes();
+  public route: Routes = new Routes();
   public createdBy: User = new User();
   public title: string;
   public description: string;
@@ -47,13 +47,11 @@ export class RoutesCreateComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.routes.createdBy = this.authenticationService.getCurrentUser();
-    //this.route.creationDate = new Date();
-    this.http.get<User>(`${this.defaultRoute('users/')}${this.routes.createdBy.id}`).subscribe(data => {
-      //this.route.createdBy = data;
-      this.routeService.createResource({ body: this.routes }).subscribe(() => this.router.navigate(['/routes']));
-    })
+    this.route.createdBy = this.authenticationService.getCurrentUser();
+    this.routeService.createResource({ body: this.route }).subscribe(
+        (route:Routes) => this.router.navigate([route.uri]));
   }
+
 
   getCurrentUserName(): string {
     return this.authenticationService.getCurrentUser().id;

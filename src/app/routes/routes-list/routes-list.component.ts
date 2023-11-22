@@ -53,6 +53,12 @@ export class RoutesListComponent implements OnInit {
       sort: {name: 'ASC'}}).subscribe(
       (page: PagedResourceCollection<Routes>) => {
         this.routes = page.resources;
+        this.routes.map(routes => {
+          routes.getRelation('createdBy')
+            .subscribe((user: User) => {
+              routes.createdBy = user;
+            });
+        });
       });
   }
 
