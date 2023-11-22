@@ -9,11 +9,13 @@ import {CoordinateDetailComponent} from "./coordinate-detail/coordinate-detail.c
 
 
 const routes: Routes = [
-  {path: 'coordinates', component: CoordinateListComponent},
-  {path: 'coordinates/create', component: CoordinateCreateComponent},
-  {path: 'coordinates/:id', component: CoordinateDetailComponent},
-  {path: 'coordinates/:id/edit', component: CoordinateUpdateComponent},
-  {path: 'coordinates/:id/delete', component: CoordinateDeleteComponent},
+  {path: '', component: CoordinateListComponent},
+  {path: 'create', component: CoordinateCreateComponent},
+  {path: ':id', component: CoordinateDetailComponent},
+  {path: ':id/edit', component: CoordinateUpdateComponent},
+  {path: ':id/delete', component: CoordinateDeleteComponent},
+  { path: '**', redirectTo: ''},
+
 ];
 
 @NgModule({

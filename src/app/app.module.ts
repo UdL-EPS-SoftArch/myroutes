@@ -23,13 +23,7 @@ import {HttpErrorInterceptor} from './error-handler/http-error-interceptor';
 import {AuthenticationBasicService} from './login-basic/authentication-basic.service';
 import {LoggedInGuard} from './login-basic/loggedin.guard';
 import {UserService} from './user/user.service';
-import { CoordinateListComponent } from './coordinate/coordinate-list/coordinate-list.component';
-import { CoordinateRoutingModule } from './coordinate/coordinate-routing.module';
-import { CoordinateCreateComponent } from './coordinate/coordinate-create/coordinate-create.component';
-import { CoordinateUpdateComponent } from './coordinate/coordinate-update/coordinate-update.component';
-import { CoordinateDetailComponent } from './coordinate/coordinate-detail/coordinate-detail.component';
-import { CoordinateDeleteComponent } from './coordinate/coordinate-delete/coordinate-delete.component';
-import { CoordinateSearchComponent } from './coordinate/coordinate-search/coordinate-search.component';
+import {CoordinateModule} from "./coordinate/coordinate.module";
 
 @NgModule({
   declarations: [
@@ -43,12 +37,6 @@ import { CoordinateSearchComponent } from './coordinate/coordinate-search/coordi
     UserEditComponent,
     UserDeleteComponent,
     UserSearchComponent,
-    CoordinateListComponent,
-    CoordinateCreateComponent,
-    CoordinateUpdateComponent,
-    CoordinateDetailComponent,
-    CoordinateDeleteComponent,
-    CoordinateSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +51,7 @@ import { CoordinateSearchComponent } from './coordinate/coordinate-search/coordi
     ErrorHandlerModule,
     NgbModule,
     ReactiveFormsModule,
-    CoordinateRoutingModule
+    CoordinateModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
