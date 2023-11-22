@@ -1,5 +1,4 @@
 import {Component, EventEmitter, Output} from '@angular/core';
-import {User} from "../../login-basic/user";
 import {Route} from "../route";
 import {RouteService} from "../route.service";
 import {Observable, of, OperatorFunction} from "rxjs";
