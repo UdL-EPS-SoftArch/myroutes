@@ -49,7 +49,7 @@ export class RouteDetailComponent implements OnInit {
   }
 
   currentUserEdit(){
-    return this.getCurrentUserName() == this.route.createdBy.id;
+    return this.getCurrentUserName() == this.route.createdBy.username;
   }
 
 }
