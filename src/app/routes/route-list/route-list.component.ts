@@ -65,4 +65,12 @@ export class RouteListComponent implements OnInit {
   isRole(role: string): boolean {
     return this.authenticationService.isRole(role);
   }
+
+  getCurrentUserName(): string {
+    return this.authenticationService.getCurrentUser().id;
+  }
+
+  currentUserEdit(username: string){
+    return this.getCurrentUserName() == username;
+  }
 }

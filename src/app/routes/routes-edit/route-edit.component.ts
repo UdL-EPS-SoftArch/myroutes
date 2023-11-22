@@ -4,6 +4,7 @@ import {RouteService} from "../route.service";
 import {Route} from "../route";
 import {switchMap} from "rxjs/operators";
 import {User} from "../../login-basic/user";
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-routes-edit',
@@ -15,7 +16,8 @@ export class RouteEditComponent {
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
-              private routesService: RouteService) { }
+              private routesService: RouteService,
+              private location: Location) { }
 
   ngOnInit(): void {
 
@@ -36,13 +38,12 @@ export class RouteEditComponent {
 
   onSubmit() {
     this.routesService.patchResource(this.route).subscribe(
-      (patchedRating: Route) => {
-        this.router.navigate(['routes', patchedRating.id]);
+      (route: Route) => {
+        this.router.navigate([route.uri]);
       });
   }
 
-  getCurrentRoute(): string {
-    return this.route.id;
+  goBackToPrevPage(): void {
+    this.location.back();
   }
-
 }

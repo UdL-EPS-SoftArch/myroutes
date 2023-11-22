@@ -29,9 +29,9 @@
       </div>
       <div class="card-footer text-right row">
         <div class="btn-group" role="group" aria-label="Basic example">
-          <button type="button" [routerLink]="['edit']" class="btn col-6 m-1 btn-outline-success">Edit</button>
+          <button type="button" *ngIf="currentUserEdit(route.createdBy.username)" [routerLink]="[route.uri+'/edit']" class="btn col-6 m-1 btn-outline-success">Edit</button>
           <button type="button" [routerLink]="[route.uri]" class="btn col-6 m-1 btn-outline-primary">Detail</button>
-          <button type="button" [routerLink]="['delete']" class="btn col-6 m-1 btn-outline-danger">Delete</button>
+          <button type="button" *ngIf="isRole('admin')" [routerLink]="[route.uri + '/delete']" class="btn col-6 m-1 btn-outline-danger">Delete</button>
         </div>
     </div>
   </div>

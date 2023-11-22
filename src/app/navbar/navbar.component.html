@@ -26,10 +26,6 @@
              [routerLink]="['/routes/create']"><span class="fas fa-user-circle"></span> Create</a>
           <a class="dropdown-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
              [routerLink]="['/routes']"><span class="fas fa-user-circle"></span> List</a>
-          <a class="dropdown-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
-             [routerLink]="['/routes/update']"><span class="fas fa-user-circle"></span> Update</a>
-          <a class="dropdown-item" *ngIf="isRole('admin')" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
-             [routerLink]="['/routes/remove']"><span class="fas fa-user-circle"></span> Remove</a>
         </div>
       </li>
     </ul>
