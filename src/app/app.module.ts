@@ -24,6 +24,14 @@ import {AuthenticationBasicService} from './login-basic/authentication-basic.ser
 import {LoggedInGuard} from './login-basic/loggedin.guard';
 import {UserService} from './user/user.service';
 
+import {RouteCreateComponent} from "./routes/route-create/route-create.component";
+import { RouteListComponent } from './routes/route-list/route-list.component';
+import { RouteDetailComponent } from './routes/route-detail/route-detail.component';
+import { RouteEditComponent } from './routes/routes-edit/route-edit.component';
+import { RouteDeleteComponent } from './routes/route-delete/route-delete.component';
+import { RouteSearchComponent } from './routes/route-search/route-search.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +43,15 @@ import {UserService} from './user/user.service';
     UserRegisterComponent,
     UserEditComponent,
     UserDeleteComponent,
-    UserSearchComponent
+    UserSearchComponent,
+    RouteCreateComponent,
+    RouteListComponent,
+    RouteDetailComponent,
+    RouteEditComponent,
+    RouteDeleteComponent,
+    RouteSearchComponent
+
+
   ],
   imports: [
     BrowserModule,
