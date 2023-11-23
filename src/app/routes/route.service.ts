@@ -17,4 +17,8 @@ export class RouteService extends HateoasResourceOperation<Route> {
   public findByTitle(title: string): Observable<ResourceCollection<Route>> {
     return this.searchCollection("findByTitle", { params: { title: title } })
   }
+
+  public findByTitleContainingIgnoreCase(title: string): Observable<ResourceCollection<Route>> {
+    return this.searchCollection("findByTitleContainingIgnoreCase", { params: { title: title } })
+  }
 }

@@ -24,7 +24,7 @@ export class RouteSearchComponent {
       distinctUntilChanged(),
       tap(() => this.searching = true),
       switchMap(term => term.length < 3 ? of([]) :
-        this.routeService.findByTitle(term).pipe(
+        this.routeService.findByTitleContainingIgnoreCase(term).pipe(
           map((collection: ResourceCollection<Route>) => collection.resources),
           tap(() => this.searchFailed = false),
           catchError(() => {
