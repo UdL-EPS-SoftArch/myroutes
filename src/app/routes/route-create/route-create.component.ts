@@ -4,10 +4,10 @@ import { AuthenticationBasicService } from 'src/app/login-basic/authentication-b
 import { User } from 'src/app/login-basic/user';
 import { Route } from '../route';
 import { RouteService } from '../route.service';
-import { Input } from '@angular/core';
 import { UserService } from 'src/app/user/user.service';
 import { PagedResourceCollection } from '@lagoshny/ngx-hateoas-client';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-routes-create',
@@ -27,6 +27,7 @@ export class RouteCreateComponent implements OnInit {
   public page = 1;
   public totalUsers = 0;
   public authserv: AuthenticationBasicService;
+  public types: [];
 
   constructor(private router: Router,
               private authenticationService: AuthenticationBasicService,
@@ -37,7 +38,10 @@ export class RouteCreateComponent implements OnInit {
   ngOnInit(): void {
     this.createdBy.id = this.getCurrentUserName();
     this.creationDate = new Date();
-
+    this.http.get<any>(`${environment.API}/profile/routes`)
+      .subscribe(data => {
+        this.types = (data.alps.descriptor[0].descriptor[2].doc.value).split(',');
+      });
 
     this.userService.getPage({ pageParams:  { size: this.pageSize }, sort: { username: 'ASC' } }).subscribe(
       (page: PagedResourceCollection<User>) => {
