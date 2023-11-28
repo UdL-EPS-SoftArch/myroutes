@@ -5,6 +5,10 @@ import { Route } from '../route';
 import { PagedResourceCollection } from '@lagoshny/ngx-hateoas-client';
 import { User } from 'src/app/login-basic/user';
 import { AuthenticationBasicService } from 'src/app/login-basic/authentication-basic.service';
+import {map} from "rxjs/operators";
+import {environment} from "../../../environments/environment";
+import {HttpClient} from "@angular/common/http";
+import {routes} from "../../login-basic/login-basic.routing";
 
 @Component({
   selector: 'app-routes-list',
@@ -18,15 +22,22 @@ export class RouteListComponent implements OnInit {
   public pageSize = 5;
   public page = 1;
   public totalRoutes = 0;
+  public types: [];
+  public type: string;
 
 
   constructor(
     public router: Router,
     private routesService: RouteService,
-    private authenticationService: AuthenticationBasicService) {
+    private authenticationService: AuthenticationBasicService,
+    private http: HttpClient) {
   }
 
   ngOnInit(): void {
+    this.http.get<any>(`${environment.API}/profile/routes`)
+      .subscribe(data => {
+        this.types = (data.alps.descriptor[0].descriptor[2].doc.value).split(',');
+      });
     this.routesService.getPage({ pageParams: { size: this.pageSize }, sort: { username: 'ASC' } }).subscribe(
       (page: PagedResourceCollection<Route>) => {
       this.routes = page.resources;
@@ -75,7 +86,6 @@ export class RouteListComponent implements OnInit {
   }
 
   detail(route: Route): void {
-    console.log(route.id);
     this.router.navigate([route.uri]);
   }
 }
