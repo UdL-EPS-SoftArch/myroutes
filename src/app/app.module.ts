@@ -30,6 +30,12 @@ import { RouteDetailComponent } from './routes/route-detail/route-detail.compone
 import { RouteEditComponent } from './routes/routes-edit/route-edit.component';
 import { RouteDeleteComponent } from './routes/route-delete/route-delete.component';
 import { RouteSearchComponent } from './routes/route-search/route-search.component';
+import { RouteFollowedCreateComponent } from './routeFollowed/route-followed-create/route-followed-create.component';
+import { RouteFollowedDeleteComponent } from './routeFollowed/route-followed-delete/route-followed-delete.component';
+import { RouteFollowedDetailComponent } from './routeFollowed/route-followed-detail/route-followed-detail.component';
+import { RouteFollowedListComponent } from './routeFollowed/route-followed-list/route-followed-list.component';
+import { RouteFollowedSearchComponent } from './routeFollowed/route-followed-search/route-followed-search.component';
+import { RouteFollowedEditComponent } from './routeFollowed/route-followed-edit/route-followed-edit.component';
 
 
 @NgModule({
@@ -49,7 +55,13 @@ import { RouteSearchComponent } from './routes/route-search/route-search.compone
     RouteDetailComponent,
     RouteEditComponent,
     RouteDeleteComponent,
-    RouteSearchComponent
+    RouteSearchComponent,
+    RouteFollowedCreateComponent,
+    RouteFollowedDeleteComponent,
+    RouteFollowedDetailComponent,
+    RouteFollowedListComponent,
+    RouteFollowedSearchComponent,
+    RouteFollowedEditComponent
 
 
   ],
