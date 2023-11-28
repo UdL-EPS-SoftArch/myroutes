@@ -12,7 +12,7 @@ export class RouteService extends HateoasResourceOperation<RouteFollowed> {
     super(RouteFollowed);
   }
 
-  public findByCreatedBy(creator: string): Observable<ResourceCollection<RouteFollowed>> {
+  public findByCreatedBy(creator: User): Observable<ResourceCollection<RouteFollowed>> {
     return this.searchCollection("findByCreatedBy", { params: { creator: creator } })
   }
 
