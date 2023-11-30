@@ -64,9 +64,4 @@ export class RouteCreateComponent implements OnInit {
   isRole(role: string): boolean {
     return this.authenticationService.isRole(role);
   }
-
-  defaultRoute(endpoint: string): string {
-    //return `http://192.168.1.95:8080/${endpoint}`;
-    return `http://localhost:8080/${endpoint}`;
-  }
 }
