@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import {RouteService} from "../route.service";
-import {PagedResourceCollection, ResourceCollection, Sort} from "@lagoshny/ngx-hateoas-client";
+import {PagedResourceCollection} from "@lagoshny/ngx-hateoas-client";
 import {Route} from "../route";
 import {environment} from "../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
