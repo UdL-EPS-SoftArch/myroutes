@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {RouteService} from "../route.service";
 import {Route} from "../route";
@@ -11,7 +11,7 @@ import { Location } from '@angular/common'
   templateUrl: './route-edit.component.html',
   styleUrls: ['./route-edit.component.css']
 })
-export class RouteEditComponent {
+export class RouteEditComponent implements OnInit{
   public route: Route = new Route();
 
   constructor(private activatedRoute: ActivatedRoute,
