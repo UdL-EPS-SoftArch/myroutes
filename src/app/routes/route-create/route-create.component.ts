@@ -40,7 +40,7 @@ export class RouteCreateComponent implements OnInit {
     this.creationDate = new Date();
     this.http.get<any>(`${environment.API}/profile/routes`)
       .subscribe(data => {
-        this.types = (data.alps.descriptor[0].descriptor[2].doc.value).split(',');
+        this.types = (data.alps.descriptor[0].descriptor[2].doc.value).split(',').sort();
       });
 
     this.userService.getPage({ pageParams:  { size: this.pageSize }, sort: { username: 'ASC' } }).subscribe(
