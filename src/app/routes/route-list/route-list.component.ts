@@ -75,7 +75,10 @@ export class RouteListComponent implements OnInit {
   }
 
   detail(route: Route): void {
-    console.log(route.id);
     this.router.navigate([route.uri]);
+  }
+
+  reBind(routes: any): void {
+    this.modifyList(routes);
   }
 }

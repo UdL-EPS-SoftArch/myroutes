@@ -1,4 +1,7 @@
-<app-route-search (emitResults)="detail($event)"></app-route-search>
+<div class="row">
+<app-route-search class="col-lg-6 col-md-6 col-sm-12 col-xs-12" (emitResults)="detail($event)"></app-route-search>
+<app-route-filter class="col-lg-6 col-md-6 col-sm-12 col-xs-12" (emitResults)="reBind($event)"></app-route-filter>
+</div>
 <div class="row">
   <hr class="my-3">
 </div>

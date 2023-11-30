@@ -1,0 +1,12 @@
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <label class="input-group-text" for="type">Filter routes by type: </label>
+  </div>
+  <select id="type" class="form-control custom-select"
+          (change)="filterRoutes($event.target.value)">
+    <option *ngFor="let type of types;let i = index"
+            [value]="type"
+            [selected]="i == 0">
+      {{type}}</option>
+  </select>
+</div>
