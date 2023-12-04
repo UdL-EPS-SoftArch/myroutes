@@ -26,7 +26,7 @@
     <div class="form-group mb-3">
       <label class="control-label" for="type">Type</label>
       <select class="form-select" aria-label="type" id="type" name="type" [(ngModel)]="route.type" #type="ngModel">
-        <option *ngFor="let typ of types;let i=index" [value]="typ" [selected]="i == 0">{{typ}}</option>
+        <option *ngFor="let typ of types;let i=index" [value]="typ" [selected]="i === 0">{{typ}}</option>
       </select>
     </div>
 
