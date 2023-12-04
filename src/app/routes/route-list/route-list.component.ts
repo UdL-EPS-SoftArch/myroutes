@@ -88,4 +88,8 @@ export class RouteListComponent implements OnInit {
   detail(route: Route): void {
     this.router.navigate([route.uri]);
   }
+
+  reBind(routes: any): void {
+    this.modifyList(routes);
+  }
 }

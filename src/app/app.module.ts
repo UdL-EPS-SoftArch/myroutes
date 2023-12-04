@@ -30,6 +30,7 @@ import { RouteDetailComponent } from './routes/route-detail/route-detail.compone
 import { RouteEditComponent } from './routes/routes-edit/route-edit.component';
 import { RouteDeleteComponent } from './routes/route-delete/route-delete.component';
 import { RouteSearchComponent } from './routes/route-search/route-search.component';
+import { RouteFilterComponent } from './routes/route-filter/route-filter.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { RouteSearchComponent } from './routes/route-search/route-search.compone
     RouteDetailComponent,
     RouteEditComponent,
     RouteDeleteComponent,
-    RouteSearchComponent
+    RouteSearchComponent,
+    RouteFilterComponent
 
 
   ],
