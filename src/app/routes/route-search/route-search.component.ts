@@ -14,6 +14,7 @@ export class RouteSearchComponent {
   @Output() emitResults: EventEmitter<Route> = new EventEmitter();
   searchFailed = false;
   searching = false;
+  minLength = 3;
 
   constructor(private routeService: RouteService) {
   }
@@ -23,7 +24,7 @@ export class RouteSearchComponent {
       debounceTime(500),
       distinctUntilChanged(),
       tap(() => this.searching = true),
-      switchMap(term => term.length < 3 ? of([]) :
+      switchMap(term => term.length < this.minLength ? of([]) :
         this.routeService.findByTitleContainingIgnoreCase(term).pipe(
           map((collection: ResourceCollection<Route>) => collection.resources),
           tap(() => this.searchFailed = false),
