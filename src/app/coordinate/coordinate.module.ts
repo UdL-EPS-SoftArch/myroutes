@@ -10,7 +10,6 @@ import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {AuthInterceptor} from "../login-basic/auth-interceptor";
 import {HttpErrorInterceptor} from "../error-handler/http-error-interceptor";
 import {AuthenticationBasicService} from "../login-basic/authentication-basic.service";
-import {LoggedInGuard} from "../login-basic/loggedin.guard";
 import {UserService} from "../user/user.service";
 import {AppComponent} from "../app.component";
 
@@ -29,7 +28,7 @@ import {AppComponent} from "../app.component";
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
-    AuthenticationBasicService, LoggedInGuard, UserService
+    AuthenticationBasicService, UserService
   ],
   bootstrap: [AppComponent]
 })

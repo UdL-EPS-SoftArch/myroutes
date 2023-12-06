@@ -48,7 +48,7 @@ import {PermissionsService } from "./login-basic/authentication.guard";
     UserSearchComponent,
     RouteCreateComponent,
     RouteListComponent,
-    RouteFilterComponent
+    RouteFilterComponent,
     RouteSearchComponent,
     RouteDeleteComponent,
     RouteEditComponent,
