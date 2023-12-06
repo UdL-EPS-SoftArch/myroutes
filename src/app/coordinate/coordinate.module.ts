@@ -13,7 +13,7 @@ import {AuthenticationBasicService} from "../login-basic/authentication-basic.se
 import {UserService} from "../user/user.service";
 import {AppComponent} from "../app.component";
 import {NgbPagination} from "@ng-bootstrap/ng-bootstrap";
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {NgxDatatableModule} from "@swimlane/ngx-datatable";
 
 @NgModule({
@@ -25,12 +25,13 @@ import {NgxDatatableModule} from "@swimlane/ngx-datatable";
     CoordinateDeleteComponent,
     CoordinateSearchComponent
   ],
-  imports: [
-    CoordinateRoutingModule,
-    NgbPagination,
-    NgForOf,
-    NgxDatatableModule
-  ],
+    imports: [
+        CoordinateRoutingModule,
+        NgbPagination,
+        NgForOf,
+        NgxDatatableModule,
+        NgIf
+    ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
