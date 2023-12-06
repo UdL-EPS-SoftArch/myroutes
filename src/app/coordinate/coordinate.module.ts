@@ -12,6 +12,9 @@ import {HttpErrorInterceptor} from "../error-handler/http-error-interceptor";
 import {AuthenticationBasicService} from "../login-basic/authentication-basic.service";
 import {UserService} from "../user/user.service";
 import {AppComponent} from "../app.component";
+import {NgbPagination} from "@ng-bootstrap/ng-bootstrap";
+import {NgForOf} from "@angular/common";
+import {NgxDatatableModule} from "@swimlane/ngx-datatable";
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import {AppComponent} from "../app.component";
     CoordinateSearchComponent
   ],
   imports: [
-    CoordinateRoutingModule
+    CoordinateRoutingModule,
+    NgbPagination,
+    NgForOf,
+    NgxDatatableModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

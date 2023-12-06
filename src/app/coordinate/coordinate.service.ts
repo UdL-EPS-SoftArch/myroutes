@@ -1,15 +1,14 @@
 import {Injectable} from '@angular/core';
-import {CoordinateModule} from './coordinate.module';
 import {HttpClient} from '@angular/common/http';
 
-/* import { Observable } from 'rxjs/internal/Observable'; */
 import {HateoasResourceOperation,} from '@lagoshny/ngx-hateoas-client';
+import {Coordinate} from "./coordinate.entity";
 
 @Injectable({
   providedIn: 'root'
 })
-export class CoordinateService extends HateoasResourceOperation<CoordinateModule> {
+export class CoordinateService extends HateoasResourceOperation<Coordinate> {
   constructor(private http: HttpClient) {
-    super(CoordinateModule);
+    super(Coordinate);
   }
 }
