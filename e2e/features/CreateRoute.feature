@@ -10,7 +10,7 @@ Feature: Create a new route
       | FIELD       | VALUE         |
       | title       | testRoute     |
       | description | That's a test route to make e2e tests |
-      | type | Running      |
+    And Select type "Running" from the dropdown of types
     And I click the "Submit" button
-    Then I'm logged in as user "user"
+    Then I've created a new route with creation user "demo", title "testRoute", description "That's a test route to make e2e tests" and type "Running"
 

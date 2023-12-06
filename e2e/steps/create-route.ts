@@ -1,4 +1,4 @@
-import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
+import {Given, When, Then, And} from 'cypress-cucumber-preprocessor/steps';
 import { DataTable } from '@cucumber/cucumber';
 import { goToHomepage, login, logout, clickMenuOption } from "../../cypress/support/commands";
 
@@ -17,3 +17,20 @@ When('I click on the {string} menu option', (option) => {
   cy.get('.nav-link').contains(option).click();
   cy.get('#createRoute').click();
 });
+
+And('Select type {string} from the dropdown of types', (type) => {
+    cy.get('#type').select(type);
+});
+
+Then('I\'ve created a new route with creation user {string}, title {string}, description {string} and type {string}',(username,title,description,type) => {
+  checkElementText('#CreatedBy', username);
+  checkElementText('#Title', title);
+  checkElementText('#Description', description);
+  checkElementText('#Type', type);
+});
+
+function checkElementText(element:string, text:string) {
+  cy.get(element)
+    .invoke('text')
+    .should('contains', text);
+}
