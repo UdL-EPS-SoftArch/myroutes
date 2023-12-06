@@ -24,7 +24,7 @@ export class UserSearchComponent {
       distinctUntilChanged(),
       tap(() => this.searching = true),
       switchMap(term => term.length < 3 ? of([]) :
-        this.userService.findByUsernameContaining(term).pipe(
+        this.userService.findByIdContaining(term).pipe(
           map((collection: ResourceCollection<User>) => collection.resources),
           tap(() => this.searchFailed = false),
           catchError(() => {
