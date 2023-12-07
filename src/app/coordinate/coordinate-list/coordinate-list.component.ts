@@ -3,8 +3,11 @@ import {Coordinate} from "../coordinate.entity";
 import {Router} from "@angular/router";
 import {CoordinateService} from "../coordinate.service";
 import {AuthenticationBasicService} from "../../login-basic/authentication-basic.service";
-import {PagedResourceCollection} from "@lagoshny/ngx-hateoas-client";
+import {PagedResourceCollection, ResourceCollection} from "@lagoshny/ngx-hateoas-client";
 import {ColumnMode, DatatableComponent} from "@swimlane/ngx-datatable";
+import {catchError, map, tap} from "rxjs/operators";
+import {Route} from "../../routes/route";
+import {of} from "rxjs";
 
 @Component({
   selector: 'app-coordinate-list',
@@ -43,16 +46,33 @@ export class CoordinateListComponent implements OnInit {
 
   updateFilter(event) {
     const val = event.target.value.toLowerCase();
-    if (val.length <= 3) return;
+    if (val.length == 0) {
+      this.getCoordinates();
+      return;
+    }
+    if (val.length <= 3) {
+      return;
+    }
     this.loading = true;
+    this.currentPage = 0;
 
-    // this.getCoordinatesByCoordinate(val);
+    this.coordinateService.findByCoordinateContainingIgnoreCase(val).subscribe((collection: ResourceCollection<Coordinate>) => {
+      this.coordinates = collection.resources;
+      this.totalCoordinates = collection.resources.length;
+      this.pageSize = collection.resources.length;
+      this.coordinates.map(coordinate => {
+        this.rows.push({coordinate: coordinate.coordinate, uri: coordinate.uri});
+      });
+      // this.temp = this.rows;
+      this.rows = [...this.rows];
+      this.loading = false;
+    });
 
-    this.rows = this.temp.filter(function (d) {
+    /*this.rows = this.temp.filter(function (d) {
       // return d.id.toLowerCase().indexOf(val) !== -1 || !val || d.coordinate.toLowerCase().indexOf(val) !== -1;
       return !val || d.coordinate.toLowerCase().indexOf(val) !== -1;
-    });
-    this.loading = false;
+    });*/
+    // this.loading = false;
   }
 
   setPage(pageInfo: { offset: number; }) {
@@ -62,6 +82,7 @@ export class CoordinateListComponent implements OnInit {
 
   private getCoordinates() {
     this.loading = true;
+    this.pageSize = 10;
     this.rows = [];
     this.coordinateService.getPage({
       pageParams: {size: this.pageSize, page: this.currentPage},
@@ -72,7 +93,7 @@ export class CoordinateListComponent implements OnInit {
       this.coordinates.map(coordinate => {
         this.rows.push({coordinate: coordinate.coordinate, uri: coordinate.uri});
       });
-      this.temp = this.rows;
+      // this.temp = this.rows;
       this.rows = [...this.rows];
       this.loading = false;
     });
