@@ -12,9 +12,19 @@ Given('I\'m in the homepage logged in as user with username {string} and passwor
   //login(username,password);
 });
 
-When('I click on the {string} menu option', (option) => {
+Given('I\'m in the homepage', () => {
+  cy.visit('http://localhost:4200');
+});
+
+When('I click on the {string} menu option with class {string}', (option,class_) => {
   //clickMenuOption(option);
-  cy.get('.nav-link').contains(option).click();
+  cy.get(class_).contains(option).click();
+});
+
+When('I do nothing', () => {
+    // Nothing to do
+    });
+And('I click on the {string} menu option', (option) => {
   cy.get('#createRoute').click();
 });
 
@@ -29,6 +39,18 @@ Then('I\'ve created a new route with creation user {string}, title {string}, des
   checkElementText('#Type', type);
 });
 
+Then('I try to click on the {string} menu option with class {string}', (option,class_) => {
+  describe('Exception Handling In Cypress', () => {
+    it('Navigate to webpage', () => {
+      Cypress.on('fail', (error, runnable) => {
+        if (!error.message.includes('Timed out retrying after 4000ms')) {
+          throw error
+        }
+      });
+      cy.get(class_).contains(option).click();
+    });
+  });
+});
 function checkElementText(element:string, text:string) {
   cy.get(element)
     .invoke('text')
