@@ -28,7 +28,6 @@
     <ngx-datatable
         #tableCoordinates
         class="bootstrap"
-        [columns]="columns"
         [columnMode]="ColumnMode.force"
         [headerHeight]="50"
         [footerHeight]="50"
@@ -60,10 +59,10 @@
       <ngx-datatable-column name="actions">
         <ng-template let-column="actions" ngx-datatable-header-template></ng-template>
         <ng-template let-row="row" let-value="actions" ngx-datatable-cell-template>
-          <button type="button" [routerLink]="['/coordinates/'+ row.coordinate]"
+          <button type="button" [routerLink]="[row.uri]"
                   class="btn btn-outline-primary">View</button>
           <span class="mx-2"></span>
-          <button *ngIf="isRole('admin')" type="button" [routerLink]="['/coordinates/'+ row.coordinate +'/delete']"
+          <button *ngIf="isRole('admin')" type="button" [routerLink]="[row.uri + '/delete']"
                   class="btn btn-outline-danger">Delete</button>
         </ng-template>
       </ngx-datatable-column>

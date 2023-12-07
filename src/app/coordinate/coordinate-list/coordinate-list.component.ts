@@ -25,10 +25,10 @@ export class CoordinateListComponent implements OnInit {
       //{ coordinate: 'test,test' },
       //{ coordinate: '1232131,122312331' },
     ];
-  columns = [
-    // { prop: 'id', name: 'ID' },
+  /*columns = [
+    //{ prop: 'id', name: 'ID' },
     { prop: 'coordinate', name: 'Coordinate' },
-    {name: 'Actions', prop: 'actions', sortable: false, 'template': true}];
+    {name: 'Actions', prop: 'actions', sortable: false, 'template': true}];*/
 
   constructor(
       public router: Router,
@@ -39,11 +39,6 @@ export class CoordinateListComponent implements OnInit {
 
   ngOnInit() {
     this.getCoordinates();
-  }
-
-
-  detail(coordinates: Coordinate[]) {
-
   }
 
   updateFilter(event) {
@@ -75,7 +70,7 @@ export class CoordinateListComponent implements OnInit {
       this.coordinates = page.resources;
       this.totalCoordinates = page.totalElements;
       this.coordinates.map(coordinate => {
-        this.rows.push({coordinate: coordinate.coordinate});
+        this.rows.push({coordinate: coordinate.coordinate, uri: coordinate.uri});
       });
       this.temp = this.rows;
       this.rows = [...this.rows];
