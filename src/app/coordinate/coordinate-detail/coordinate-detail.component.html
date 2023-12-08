@@ -4,14 +4,16 @@
     <!-- Title input -->
     <div class="form-group mb-3">
       <label class="control-label" for="coordinate">Coordinate</label>
-      <input id="coordinate" name="coordinate" type="text" class="form-control" required [(ngModel)]="coordinatee.coordinate"
+      <input id="coordinate" name="coordinate" type="text" class="form-control" required
+             [(ngModel)]="coordinatee.coordinate"
              pattern="^(-?([0-8]?[0-9](\.\d+)?|89(.[0]+)?)[,])+(-?([1]?[0-7]?[0-9](\.\d+)?|179((.[0]+)?)))$"
              #coordinate="ngModel" [readOnly]="true">
     </div>
 
     <div class="form-group mb-3">
       <label class="control-label" for="creationDate">Creation date</label>
-      <input id="creationDate" name="creationDate" type="text" class="form-control" [(ngModel)]="coordinatee.creationDate"
+      <input id="creationDate" name="creationDate" type="text" class="form-control"
+             [(ngModel)]="coordinatee.creationDate"
              #creationDate="ngModel" [readOnly]="true">
     </div>
 
@@ -26,9 +28,12 @@
 
     <div class=" form-group fa-pull-right">
       <button id="routeBack" type="button" (click)="goBackToPrevPage()"
-              class="btn  m-1 btn-outline-primary">Back</button>
+              class="btn  m-1 btn-outline-primary">Back
+      </button>
       <button type="editButton" [routerLink]="['edit']" class="btn m-1 btn-outline-success">Edit</button>
-      <button type="deleteButton" *ngIf="isRole('admin')"  [routerLink]="['delete']" class="btn m-1 btn-outline-danger">Delete</button>
+      <button type="deleteButton" *ngIf="isRole('admin')" [routerLink]="['delete']" class="btn m-1 btn-outline-danger">
+        Delete
+      </button>
     </div>
 
   </fieldset>

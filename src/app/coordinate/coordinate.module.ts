@@ -26,20 +26,21 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     CoordinateDeleteComponent,
     CoordinateSearchComponent
   ],
-    imports: [
-        CoordinateRoutingModule,
-        NgbPagination,
-        NgForOf,
-        NgxDatatableModule,
-        NgIf,
-        ReactiveFormsModule,
-        FormsModule
-    ],
+  imports: [
+    CoordinateRoutingModule,
+    NgbPagination,
+    NgForOf,
+    NgxDatatableModule,
+    NgIf,
+    ReactiveFormsModule,
+    FormsModule
+  ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true},
     AuthenticationBasicService, UserService
   ],
   bootstrap: [AppComponent]
 })
-export class CoordinateModule { }
+export class CoordinateModule {
+}

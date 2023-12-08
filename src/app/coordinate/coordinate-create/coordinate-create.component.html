@@ -4,10 +4,13 @@
     <!-- Title input -->
     <div class="form-group mb-3">
       <label class="control-label" for="coordinate">Coordinate</label>
-      <input id="coordinate" name="coordinate" type="text" class="form-control" required [(ngModel)]="coordinate.coordinate"
+      <input id="coordinate" name="coordinate" type="text" class="form-control" required
+             [(ngModel)]="coordinate.coordinate"
              pattern="^(-?([0-8]?[0-9](\.\d+)?|89(.[0]+)?)[,])+(-?([1]?[0-7]?[0-9](\.\d+)?|179((.[0]+)?)))$"
              #coordinate.coordinate="ngModel">
-      <div *ngIf="form.controls['coordinate']?.invalid && (form.controls['coordinate'].dirty || form.controls['coordinate'].touched)" class="alert alert-danger">
+      <div
+        *ngIf="form.controls['coordinate']?.invalid && (form.controls['coordinate'].dirty || form.controls['coordinate'].touched)"
+        class="alert alert-danger">
         <div *ngIf="form.controls['coordinate'].errors.required">
           Coordinate is required.
         </div>
@@ -27,11 +30,11 @@
 
     <!-- Buttons -->
     <div class=" form-group fa-pull-right">
-      <button id="listBtn" type="button" [routerLink]="['/coordinates']"
-              class="btn btn-outline-primary pull-right">Back
+      <button id="routeBack" type="button" (click)="goBackToPrevPage()"
+              class="btn m-1 btn-outline-primary">Back
       </button>
       <button id="submit" type="submit" [disabled]="!form.form.valid"
-              class="btn ms-3 btn-success pull-right">Submit
+              class="btn m-1 btn-success pull-right">Create
       </button>
     </div>
 

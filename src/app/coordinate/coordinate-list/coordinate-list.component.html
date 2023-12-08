@@ -25,46 +25,56 @@
     </div>
   </div>
 
-    <ngx-datatable
-        #tableCoordinates
-        class="bootstrap"
-        [columnMode]="ColumnMode.force"
-        [headerHeight]="50"
-        [footerHeight]="50"
-        rowHeight="auto"
-        [rows]="rows"
-        [loadingIndicator]="loading"
-        [externalPaging]="true"
-        [count]="totalCoordinates"
-        [offset]="currentPage"
-        [limit]="pageSize"
-        (page)="setPage($event)"
-    >
-      <!--<ngx-datatable-column name="id">
-        <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
-          <span (click)="sort()">{{ column.name.toString().toUpperCase() }}</span>
-        </ng-template>
-        <ng-template let-value="value" ngx-datatable-cell-template>
-          {{ value }}
-        </ng-template>
-      </ngx-datatable-column>-->
-      <ngx-datatable-column name="coordinate">
-        <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
-          <span (click)="sort()">{{ column.name }}</span>
-        </ng-template>
-        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-          {{ value }}
-        </ng-template>
-      </ngx-datatable-column>
-      <ngx-datatable-column name="actions">
-        <ng-template let-column="actions" ngx-datatable-header-template></ng-template>
-        <ng-template let-row="row" let-value="actions" ngx-datatable-cell-template>
+  <ngx-datatable
+    #tableCoordinates
+    class="bootstrap"
+    [columnMode]="ColumnMode.force"
+    [headerHeight]="50"
+    [footerHeight]="50"
+    rowHeight="auto"
+    [rows]="rows"
+    [loadingIndicator]="loading"
+    [externalPaging]="true"
+    [count]="totalCoordinates"
+    [offset]="currentPage"
+    [limit]="pageSize"
+    (page)="setPage($event)"
+  >
+    <!--<ngx-datatable-column name="id">
+      <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+        <span (click)="sort()">{{ column.name.toString().toUpperCase() }}</span>
+      </ng-template>
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        {{ value }}
+      </ng-template>
+    </ngx-datatable-column>-->
+    <ngx-datatable-column name="coordinate">
+      <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+        <span (click)="sort()">{{ column.name }}</span>
+      </ng-template>
+      <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+        {{ value }}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="actions">
+      <ng-template let-column="actions" ngx-datatable-header-template></ng-template>
+      <ng-template let-row="row" let-value="actions" ngx-datatable-cell-template>
+        <div style="text-align: right;">
           <button type="button" [routerLink]="[row.uri]"
-                  class="btn btn-outline-primary">View</button>
+                  class="btn btn-outline-primary">View
+          </button>
+          <span class="mx-2"></span>
+          <button type="button" [routerLink]="[row.uri + '/edit']"
+                  class="btn btn-outline-success">Edit
+          </button>
           <span class="mx-2"></span>
           <button *ngIf="isRole('admin')" type="button" [routerLink]="[row.uri + '/delete']"
-                  class="btn btn-outline-danger">Delete</button>
-        </ng-template>
-      </ngx-datatable-column>
-    </ngx-datatable>
+                  class="btn btn-outline-danger">Delete
+          </button>
+
+        </div>
+
+      </ng-template>
+    </ngx-datatable-column>
+  </ngx-datatable>
 </div>

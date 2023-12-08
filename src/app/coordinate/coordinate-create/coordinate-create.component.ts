@@ -1,7 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Coordinate} from "../coordinate.entity";
 import {CoordinateService} from "../coordinate.service";
 import {Router} from "@angular/router";
+import {Location} from "@angular/common";
+
 
 @Component({
   selector: 'app-coordinate-create',
@@ -10,17 +12,22 @@ import {Router} from "@angular/router";
 })
 export class CoordinateCreateComponent {
   public coordinate: Coordinate = new Coordinate();
-  coordinatesPattern: "^(-?([0-8]?[0-9](\\.\\d+)?|89(.[0]+)?)[,])+(-?([1]?[0-7]?[0-9](\\.\\d+)?|179((.[0]+)?)))$";
 
   constructor(
     private coordinateService: CoordinateService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private location: Location
+  ) {
+  }
 
   onSubmit(): void {
-    debugger;
-    this.coordinateService.createResource({ body: this.coordinate }).subscribe(
-      (coordinate:Coordinate) => this.router.navigate([coordinate.uri]));
+
+    this.coordinateService.createResource({body: this.coordinate}).subscribe(
+      (coordinate: Coordinate) => this.router.navigate([coordinate.uri]));
+  }
+
+  goBackToPrevPage(): void {
+    this.location.back();
   }
 
 }

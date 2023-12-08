@@ -5,9 +5,6 @@ import {CoordinateService} from "../coordinate.service";
 import {AuthenticationBasicService} from "../../login-basic/authentication-basic.service";
 import {PagedResourceCollection, ResourceCollection} from "@lagoshny/ngx-hateoas-client";
 import {ColumnMode, DatatableComponent} from "@swimlane/ngx-datatable";
-import {catchError, map, tap} from "rxjs/operators";
-import {Route} from "../../routes/route";
-import {of} from "rxjs";
 
 @Component({
   selector: 'app-coordinate-list',
@@ -25,18 +22,19 @@ export class CoordinateListComponent implements OnInit {
   loading: boolean = true;
   protected readonly ColumnMode = ColumnMode;
   rows = [
-      //{ coordinate: 'test,test' },
-      //{ coordinate: '1232131,122312331' },
-    ];
+    //{ coordinate: 'test,test' },
+    //{ coordinate: '1232131,122312331' },
+  ];
+
   /*columns = [
     //{ prop: 'id', name: 'ID' },
     { prop: 'coordinate', name: 'Coordinate' },
     {name: 'Actions', prop: 'actions', sortable: false, 'template': true}];*/
 
   constructor(
-      public router: Router,
-      private coordinateService: CoordinateService,
-      private authenticationService: AuthenticationBasicService
+    public router: Router,
+    private coordinateService: CoordinateService,
+    private authenticationService: AuthenticationBasicService
   ) {
   }
 

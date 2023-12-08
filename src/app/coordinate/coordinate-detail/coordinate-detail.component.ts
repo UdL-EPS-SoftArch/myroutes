@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthenticationBasicService} from "../../login-basic/authentication-basic.service";
-import {switchMap} from "rxjs/operators";
-import {User} from "../../login-basic/user";
 import {CoordinateService} from "../coordinate.service";
 import {Coordinate} from "../coordinate.entity";
 import {Location} from "@angular/common";
@@ -12,7 +10,7 @@ import {Location} from "@angular/common";
   templateUrl: './coordinate-detail.component.html',
   styleUrls: ['./coordinate-detail.component.scss']
 })
-export class CoordinateDetailComponent implements OnInit{
+export class CoordinateDetailComponent implements OnInit {
   public coordinatee = new Coordinate();
 
   constructor(
