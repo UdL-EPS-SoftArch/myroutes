@@ -8,4 +8,10 @@ export class Coordinate extends Resource {
     creationDate: Date;
     uri: string;
     // routeVersion: RouteVersion;
+
+  constructor(values: object = {}) {
+    super();
+    Object.assign(this as any, values);
+  }
+
 }

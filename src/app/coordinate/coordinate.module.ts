@@ -15,7 +15,7 @@ import {AppComponent} from "../app.component";
 import {NgbPagination} from "@ng-bootstrap/ng-bootstrap";
 import {NgForOf, NgIf} from "@angular/common";
 import {NgxDatatableModule} from "@swimlane/ngx-datatable";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -32,7 +32,8 @@ import {ReactiveFormsModule} from "@angular/forms";
         NgForOf,
         NgxDatatableModule,
         NgIf,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        FormsModule
     ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
