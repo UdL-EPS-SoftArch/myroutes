@@ -22,6 +22,7 @@ import {AuthInterceptor} from './login-basic/auth-interceptor';
 import {HttpErrorInterceptor} from './error-handler/http-error-interceptor';
 import {AuthenticationBasicService} from './login-basic/authentication-basic.service';
 import {UserService} from './user/user.service';
+import {CoordinateModule} from "./coordinate/coordinate.module";
 
 import {RouteCreateComponent} from "./routes/route-create/route-create.component";
 import { RouteListComponent } from './routes/route-list/route-list.component';
@@ -47,13 +48,11 @@ import {PermissionsService } from "./login-basic/authentication.guard";
     UserSearchComponent,
     RouteCreateComponent,
     RouteListComponent,
-    RouteDetailComponent,
-    RouteEditComponent,
-    RouteDeleteComponent,
+    RouteFilterComponent,
     RouteSearchComponent,
-    RouteFilterComponent
-
-
+    RouteDeleteComponent,
+    RouteEditComponent,
+    RouteDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,6 +67,7 @@ import {PermissionsService } from "./login-basic/authentication.guard";
     ErrorHandlerModule,
     NgbModule,
     ReactiveFormsModule,
+    CoordinateModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
