@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent},
   { path: '404', component: NotFoundComponent},
   { path: '', redirectTo: 'about', pathMatch: 'full'},
-  { path: 'coordinates', loadChildren: () => import('./coordinate/coordinate-routing.module').then(m => m.CoordinateRoutingModule), canActivate: [CheckIsNotAdminGuard]},
+  { path: 'coordinates', loadChildren: () => import('./coordinate/coordinate-routing.module').then(m => m.CoordinateRoutingModule), canActivate: [CheckLoggedInGuard]},
 ];
 
 @NgModule({
