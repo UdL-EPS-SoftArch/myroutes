@@ -4,6 +4,7 @@ import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs/internal/Observable';
+import {Route} from "../routes/route";
 
 @Injectable()
 export class AuthenticationBasicService {
@@ -51,5 +52,9 @@ export class AuthenticationBasicService {
   isRole(role: string): boolean {
     const user: User = this.getCurrentUser();
     return user && user.authorities[0] && user.authorities[0].authority === 'ROLE_' + role.toUpperCase();
+  }
+
+  getCurrentRoute(): Route {
+    return JSON.parse(localStorage.getItem('currentRoute'));
   }
 }
