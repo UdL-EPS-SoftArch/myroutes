@@ -6,7 +6,7 @@ import {Route} from "../routes/route";
 import {User} from "../login-basic/user";
 
 @Injectable({providedIn: "root"})
-export class RouteService extends HateoasResourceOperation<RouteFollowed> {
+export class RouteFollowedService extends HateoasResourceOperation<RouteFollowed> {
 
   constructor() {
     super(RouteFollowed);
