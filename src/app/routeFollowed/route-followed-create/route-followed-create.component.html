@@ -8,31 +8,32 @@
              #createdBy.id="ngModel">
     </div>
 
-    <!-- routeOrigin input -->
+    <!-- Route selection -->
     <div class="form-group mb-3">
-      <label class="control-label" for="routeOrigin">Route origin</label>
-      <input id="routeOrigin" name="routeOrigin" type="text" class="form-control" readonly required [(ngModel)]="routeOrigin.title"
-             #routeOrigin.title="ngModel">
+      <label class="control-label" for="routeOrigin">Route</label>
+      <select class="form-select" aria-label="type" id="routeOrigin" name="routeOrigin" [(ngModel)]="routeFollowed.routeOrigin" #routeFollowed.routeOrigin="ngModel" required>
+        <option *ngFor="let route of routes" value="{{route}}">{{route.title}}</option>
+      </select>
     </div>
 
     <!-- Duration input -->
     <div class="form-group mb-3">
       <label class="control-label" for="duration">Duration</label>
-      <input id="duration" name="duration" type="text" class="form-control" [(ngModel)]="routeFollowed.duration"
+      <input id="duration" name="duration" type="number" class="form-control" [(ngModel)]="routeFollowed.duration"
              #duration="ngModel">
     </div>
 
     <!-- LevelUp input -->
     <div class="form-group mb-3">
       <label class="control-label" for="levelUp">Level up</label>
-      <input id="levelUp" name="levelUp" type="text" class="form-control" [(ngModel)]="routeFollowed.levelUp"
+      <input id="levelUp" name="levelUp" type="number" class="form-control" [(ngModel)]="routeFollowed.levelUp"
            #levelUp="ngModel">
     </div>
 
     <!-- LevelDown input -->
     <div class="form-group mb-3">
       <label class="control-label" for="levelDown">Level down</label>
-      <input id="levelDown" name="levelDown" type="text" class="form-control" [(ngModel)]="routeFollowed.levelDown"
+      <input id="levelDown" name="levelDown" type="number" class="form-control" [(ngModel)]="routeFollowed.levelDown"
            #levelDown="ngModel">
     </div>
 

@@ -17,17 +17,12 @@ import {PagedResourceCollection} from "@lagoshny/ngx-hateoas-client";
   styleUrls: ['./route-followed-create.component.css']
 })
 export class RouteFollowedCreateComponent implements OnInit {
-  public routeOrigin: Route = new Route();
   public routeFollowed: RouteFollowed = new RouteFollowed();
+  public routes: Route[] = [];
   public createdBy: User = new User();
   public creationDate: Date;
   public duration: number;
-  public levelUp: string;
-  public levelDown: string;
-  public authserv: AuthenticationBasicService;
   public users: User[] = [];
-  public pageSize = 5;
-  public totalUsers = 0;
 
   constructor(private router: Router,
               private authenticationService: AuthenticationBasicService,
@@ -38,18 +33,18 @@ export class RouteFollowedCreateComponent implements OnInit {
   ngOnInit(): void {
     this.createdBy = this.getCurrentUserName();
     this.creationDate = new Date();
-    this.http.get<any>(`${environment.API}/profile/routes`);
+    this.loadRouteList();
+  }
 
-    this.userService.getPage({ pageParams:  { size: this.pageSize }, sort: { username: 'ASC' } }).subscribe(
-      (page: PagedResourceCollection<User>) => {
-        this.users = page.resources;
-        this.totalUsers = page.totalElements;
+  loadRouteList() {
+    this.routeService.getPage({ pageParams:  { size: 10 }, sort: { name: 'ASC' } })
+      .subscribe((routes: PagedResourceCollection<Route>) => {
+        this.routes = routes.resources;
       });
   }
 
   onSubmit(): void {
     this.routeFollowed.createdBy = this.authenticationService.getCurrentUser();
-    //this.routeFollowed.routeOrigin = this.authenticationService.getCurrentRoute();
     this.routeFollowedService.createResource({ body: this.routeFollowed }).subscribe(
       (routeFollowed:RouteFollowed) => this.router.navigate([routeFollowed.uri]));
   }
