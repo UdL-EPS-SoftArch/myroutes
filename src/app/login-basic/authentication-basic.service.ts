@@ -53,8 +53,4 @@ export class AuthenticationBasicService {
     const user: User = this.getCurrentUser();
     return user && user.authorities[0] && user.authorities[0].authority === 'ROLE_' + role.toUpperCase();
   }
-
-  getCurrentRoute(): Route {
-    return JSON.parse(localStorage.getItem('currentRoute'));
-  }
 }
