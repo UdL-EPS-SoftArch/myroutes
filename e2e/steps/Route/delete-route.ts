@@ -40,6 +40,10 @@ Then('I try to click on delete on first card', () => {
   cy.get('.btn').contains('Delete').should('not.exist');
 });
 
+Then('I try to go to {string} option in menu', (element) => {
+  cy.get('.nav-link').contains(element).should('not.exist');
+});
+
 
 
 
