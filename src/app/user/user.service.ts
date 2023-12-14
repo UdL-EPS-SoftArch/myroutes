@@ -10,7 +10,7 @@ export class UserService extends HateoasResourceOperation<User> {
     super(User);
   }
 
-  public findByUsernameContaining(query: string): Observable<ResourceCollection<User>> {
-    return this.searchCollection('findByUsernameContaining', { params: { text: query } });
+  public findByIdContaining(query: string): Observable<ResourceCollection<User>> {
+    return this.searchCollection('findByIdContaining', { params: { text: query } });
   }
 }

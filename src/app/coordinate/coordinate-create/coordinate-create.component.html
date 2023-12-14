@@ -1,0 +1,42 @@
+<form id="user-form" (ngSubmit)="onSubmit()" #form="ngForm">
+  <fieldset>
+
+    <!-- Title input -->
+    <div class="form-group mb-3">
+      <label class="control-label" for="coordinate">Coordinate</label>
+      <input id="coordinate" name="coordinate" type="text" class="form-control" required
+             [(ngModel)]="coordinate.coordinate"
+             pattern="^(-?([0-8]?[0-9](\.\d+)?|89(.[0]+)?)[,])+(-?([1]?[0-7]?[0-9](\.\d+)?|179((.[0]+)?)))$"
+             #coordinate.coordinate="ngModel">
+      <div
+        *ngIf="form.controls['coordinate']?.invalid && (form.controls['coordinate'].dirty || form.controls['coordinate'].touched)"
+        class="alert alert-danger">
+        <div *ngIf="form.controls['coordinate'].errors.required">
+          Coordinate is required.
+        </div>
+        <div *ngIf="form.controls['coordinate'].errors.pattern">
+          Coordinate must be in the format: [-89.99999 <-> 89.99999],[-179.99999 <-> 179.99999]<br/>
+          41.99999,2.11111
+        </div>
+      </div>
+    </div>
+
+    <!-- Description input -->
+    <!--<div class="form-group mb-3">
+      <label class="control-label" for="route-version">Route version</label>
+      <input id="route-version" name="route-version" type="text" class="form-control" [(ngModel)]="coordinate.coordinate"
+             #coordinate="ngModel">
+    </div>-->
+
+    <!-- Buttons -->
+    <div class=" form-group fa-pull-right">
+      <button id="routeBack" type="button" (click)="goBackToPrevPage()"
+              class="btn m-1 btn-outline-primary">Back
+      </button>
+      <button id="submit" type="submit" [disabled]="!form.form.valid"
+              class="btn m-1 btn-success pull-right">Create
+      </button>
+    </div>
+
+  </fieldset>
+</form>

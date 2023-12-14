@@ -33,6 +33,6 @@ export class UserListComponent implements OnInit {
   }
 
   detail(user: User): void {
-    this.router.navigate(['users', user.id]);
+    this.router.navigate([user.uri]);
   }
 }
