@@ -98,8 +98,7 @@ export class CoordinateListComponent implements OnInit {
   }
 
   isRole(role: string): boolean {
-    // return this.authenticationService.isRole(role);
-    return true;
+      return this.authenticationService.isRole(role);
   }
 
   getCurrentUserName(): string {
