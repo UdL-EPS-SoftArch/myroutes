@@ -6,7 +6,6 @@ export class Waypoint extends Resource {
   title: string;
   description: string;
   type: string;
-  beneficialFor: Waypoint[];
   _links: any;
 
   constructor(values: object = {}) {

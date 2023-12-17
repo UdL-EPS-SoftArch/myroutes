@@ -25,4 +25,5 @@ export class WaypointService extends HateoasResourceOperation<Waypoint> {
       params: { text: query },
     });
   }
+
 }
