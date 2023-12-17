@@ -34,11 +34,11 @@ const routes: Routes = [
   { path: 'routes/:id', component: RouteDetailComponent, canActivate: [CheckIsNotAdminGuard]},
   { path: 'routes', component: RouteListComponent, canActivate: [CheckIsNotAdminGuard] },
 
-  { path: 'routeFollowed/create', component: RouteFollowedCreateComponent, canActivate: [LoggedInGuard] },
-  { path: 'routeFollowed/:id/delete', component: RouteFollowedDeleteComponent, canActivate: [LoggedInGuard]},
-  { path: 'routeFollowed/:id/edit', component: RouteFollowedEditComponent, canActivate: [LoggedInGuard]},
-  { path: 'routeFollowed/:id', component: RouteFollowedDetailComponent, canActivate: [LoggedInGuard]},
-  { path: 'routeFollowed', component: RouteFollowedListComponent, canActivate: [LoggedInGuard] },
+  { path: 'routeFollowed/create', component: RouteFollowedCreateComponent, canActivate: [CheckIsNotAdminGuard] },
+  { path: 'routeFollowed/:id/delete', component: RouteFollowedDeleteComponent, canActivate: [CheckIsNotAdminGuard]},
+  { path: 'routeFollowed/:id/edit', component: RouteFollowedEditComponent, canActivate: [CheckIsNotAdminGuard]},
+  { path: 'routeFollowed/:id', component: RouteFollowedDetailComponent, canActivate: [CheckIsNotAdminGuard]},
+  { path: 'routeFollowed', component: RouteFollowedListComponent, canActivate: [CheckIsNotAdminGuard] },
 
   { path: 'about', component: AboutComponent},
   { path: '404', component: NotFoundComponent},

@@ -59,6 +59,11 @@ import {RouteFollowedDetailComponent} from "./routeFollowed/route-followed-detai
     RouteDeleteComponent,
     RouteEditComponent,
     RouteDetailComponent,
+    RouteFollowedCreateComponent,
+    RouteFollowedDeleteComponent,
+    RouteFollowedEditComponent,
+    RouteFollowedListComponent,
+    RouteFollowedDetailComponent
   ],
   imports: [
     BrowserModule,
