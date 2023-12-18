@@ -32,6 +32,7 @@ import { RouteDeleteComponent } from './routes/route-delete/route-delete.compone
 import { RouteSearchComponent } from './routes/route-search/route-search.component';
 import { RouteFilterComponent } from './routes/route-filter/route-filter.component';
 import {PermissionsService } from "./login-basic/authentication.guard";
+import { RouteVersionsCreateComponent } from './route-versions/route-versions-create/route-versions-create.component';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import {PermissionsService } from "./login-basic/authentication.guard";
     RouteDeleteComponent,
     RouteEditComponent,
     RouteDetailComponent,
+    RouteVersionsCreateComponent,
   ],
   imports: [
     BrowserModule,
