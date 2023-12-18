@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {RouteVersionsService} from "../route-versions.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
+import {RouteVersion} from "../routeVersion.entity";
+import {Route} from "../../routes/route";
 
 @Component({
   selector: 'app-route-versions-create',
@@ -10,6 +12,8 @@ import {HttpClient} from "@angular/common/http";
 })
 export class RouteVersionsCreateComponent implements OnInit{
   public paramRoute: string;
+  public routeVersion: RouteVersion = new RouteVersion();
+  public title: string;
 
   constructor(
     private routeVersionService: RouteVersionsService,
@@ -20,5 +24,11 @@ export class RouteVersionsCreateComponent implements OnInit{
 
   ngOnInit(): void {
     this.paramRoute = this.route.snapshot.params['param']
+  }
+
+  onSubmit(): void {
+    this.routeVersion.versionOf = new Route()
+    this.routeVersionService.createResource({ body: this.routeVersion }).subscribe(
+      (routeVersion:RouteVersion) => this.router.navigate([routeVersion.uri]))
   }
 }
