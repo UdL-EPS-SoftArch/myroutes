@@ -1,6 +1,5 @@
 import {HateoasResource, Resource} from "@lagoshny/ngx-hateoas-client";
 import {User} from "../login-basic/user";
-import {Route} from "../routes/route";
 
 @HateoasResource('routeVersions')
 export class RouteVersion extends Resource {
@@ -8,7 +7,7 @@ export class RouteVersion extends Resource {
   title:string;
   creationDate: Date
   createdBy: User
-  versionOf: Route
+  versionOf: string
   uri: string
 
   constructor(values: object = {}) {
