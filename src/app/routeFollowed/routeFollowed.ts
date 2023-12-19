@@ -8,7 +8,7 @@ export class RouteFollowed extends Resource {
   duration: number;
   levelUp: number;
   levelDown: string;
-  routeOrigin: Route;
+  follows: Route;
   createdBy: User;
   uri: string
 
