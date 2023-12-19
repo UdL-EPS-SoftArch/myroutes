@@ -38,6 +38,7 @@ import {RouteFollowedEditComponent} from "./routeFollowed/route-followed-edit/ro
 import {RouteFollowedListComponent} from "./routeFollowed/route-followed-list/route-followed-list.component";
 import {RouteFollowedDetailComponent} from "./routeFollowed/route-followed-detail/route-followed-detail.component";
 
+import { RouteVersionsCreateComponent } from './route-versions/route-versions-create/route-versions-create.component';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import {RouteFollowedDetailComponent} from "./routeFollowed/route-followed-detai
     RouteFollowedDeleteComponent,
     RouteFollowedEditComponent,
     RouteFollowedListComponent,
-    RouteFollowedDetailComponent
+    RouteFollowedDetailComponent,
+    RouteVersionsCreateComponent,
   ],
   imports: [
     BrowserModule,
