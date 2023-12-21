@@ -1,10 +1,10 @@
 import {Given, When, Then, And} from 'cypress-cucumber-preprocessor/steps';
 
-function setElementValue(element:string, value:string) {
+export function setElementValue(element:string, value:string) {
   cy.get(element).type(value).blur();
 }
 
-function selectNavigationBar(navigationElement:string, navigationItem:string){
+export function selectNavigationBar(navigationElement:string, navigationItem:string){
   cy.get('.nav-link').contains(navigationElement).click();
   cy.get('.nav-item.dropdown.show').find('.dropdown-item').contains(navigationItem).click();
 }
@@ -47,14 +47,14 @@ Then('I try to go to {string} option in menu', (element) => {
 
 
 
-function login(username:string, password:string) {
+export function login(username:string, password:string) {
   cy.get('.nav-link').contains('Login').click();
   cy.get('#username').type(username).blur();
   cy.get('#password').type(password).blur();
   cy.get('button').contains('Submit').click();
 }
 
-Then('Delete first route', () => {
+Then('Logout and delete first route', () => {
   cy.get('.nav-link').contains('Logout').click();
   login('root', 'password');
   selectNavigationBar('Route','List');

@@ -11,7 +11,7 @@ Feature: Read a route
     Given I log in as "root" with password "password"
     Given I go to "List" option in menu "Route"
     When I try to click on detail on first card
-    Then Delete first route
+    Then Logout and delete first route
 
 
   Scenario: Read a route as normal user
@@ -21,7 +21,7 @@ Feature: Read a route
     Given I go to "List" option in menu "Route"
     When I click on detail on first card
     Then I confirm that i see the route title "testRoute"
-    Then Delete first route
+    Then Logout and delete first route
 
   Scenario: Read a route as not logged user
     Given I'm in the homepage

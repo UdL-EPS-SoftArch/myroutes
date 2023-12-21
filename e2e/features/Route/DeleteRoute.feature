@@ -20,7 +20,7 @@ Feature: Delete a route
     Given I've a route created with title "testRoute"
     Given I go to "List" option in menu "Route"
     Then I try to click on delete on first card
-    Then Delete first route
+    Then Logout and delete first route
 
   Scenario: Delete a route as not logged user
     Given I'm in the homepage
@@ -28,4 +28,4 @@ Feature: Delete a route
     Given I've a route created with title "testRoute"
     Given I logout
     Then I try to go to "Route" option in menu
-
+    Then Delete first route
