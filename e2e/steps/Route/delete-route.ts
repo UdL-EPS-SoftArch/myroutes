@@ -16,7 +16,7 @@ Given('I\'ve a route created with title {string}', (routeTitle) => {
   setElementValue('#description', 'Description');
   cy.get('#type').select('Running');
   cy.get('#submit').click();
-  cy.wait(1000);
+  cy.wait(300);
 });
 
 Given('I go to {string} option in menu {string}', ( subElement, option) => {

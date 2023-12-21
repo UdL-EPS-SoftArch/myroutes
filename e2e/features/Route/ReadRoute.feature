@@ -29,4 +29,5 @@ Feature: Read a route
     Given I've a route created with title "testRoute"
     Given I logout
     Then I try to go to "Route" option in menu
+    Then Delete first route
 
