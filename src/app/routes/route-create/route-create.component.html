@@ -9,7 +9,7 @@
     </div>
 
     <!-- Title input -->
-    <div class="form-group mb-3" [class.was-validated]="title.invalid && (title.dirty || title.touched)">>
+    <div class="form-group mb-3" [class.was-validated]="title.invalid && (title.dirty || title.touched)">
       <label class="control-label" for="title">Title</label>
       <input id="title" name="title" type="text" class="form-control" required minlength="3" [(ngModel)]="route.title"
              #title="ngModel">
