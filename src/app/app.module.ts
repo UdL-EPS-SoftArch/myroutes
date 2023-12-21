@@ -40,7 +40,6 @@ import {RouteFollowedDetailComponent} from "./routeFollowed/route-followed-detai
 
 import { RouteVersionsCreateComponent } from './route-versions/route-versions-create/route-versions-create.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

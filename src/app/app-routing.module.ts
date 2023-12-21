@@ -33,7 +33,7 @@ const routes: Routes = [
   { path: 'routes/:id/delete', component: RouteDeleteComponent, canActivate: [CheckIsAdminGuard]},
   { path: 'routes/:id/edit', component: RouteEditComponent, canActivate: [CheckIsNotAdminGuard]},
   { path: 'routes/:id', component: RouteDetailComponent, canActivate: [CheckIsNotAdminGuard]},
-  { path: 'routes', component: RouteListComponent, canActivate: [CheckIsNotAdminGuard] },
+  { path: 'routes', component: RouteListComponent, canActivate: [CheckLoggedInGuard] },
 
   { path: 'route-versions-create', component: RouteVersionsCreateComponent, canActivate: [CheckIsNotAdminGuard] },
 

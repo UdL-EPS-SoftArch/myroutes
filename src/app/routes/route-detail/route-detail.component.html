@@ -7,23 +7,23 @@
       <div class="card-body row m-1">
         <div class="col-md-6 p-3">
           <h6 class="card-subtitle text-muted">CreatedBy</h6>
-          <p class="card-text">{{route.createdBy?.username}}</p>
+          <p id="CreatedBy" class="card-text">{{route.createdBy?.username}}</p>
         </div>
         <div class="col-md-6 p-3">
           <h6 class="card-subtitle text-muted">Creation date</h6>
-          <p class="card-text">{{route.creationDate | date: 'dd/MM/yyyy HH:mm:ss'}}</p>
+          <p id="CreationDate" class="card-text">{{route.creationDate | date: 'dd/MM/yyyy HH:mm:ss'}}</p>
         </div>
         <div class="col-md-4 p-3">
           <h6 class="card-subtitle text-muted">Title</h6>
-          <p class="card-text">{{route.title}}</p>
+          <p id="Title" class="card-text">{{route.title}}</p>
         </div>
         <div class="col-md-4 p-3">
           <h6 class="card-subtitle text-muted">Type</h6>
-          <p class="card-text">{{route.type}}</p>
+          <p id="Type" class="card-text">{{route.type}}</p>
         </div>
         <div class="col-lg-4 col-md-12 p-3">
           <h6 class="card-subtitle text-muted">Description</h6>
-          <p class="card-text">{{route.description}}</p>
+          <p id="Description" class="card-text">{{route.description}}</p>
         </div>
       </div>
       <div class="card-footer text-right row">
