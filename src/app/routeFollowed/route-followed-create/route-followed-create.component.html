@@ -1,0 +1,51 @@
+<form id="user-form" (ngSubmit)="onSubmit()" #form="ngForm">
+  <fieldset>
+
+    <!-- createdBy input -->
+    <div class="form-group mb-3">
+      <label class="control-label" for="createdBy">Created by</label>
+      <input id="createdBy" name="createdBy" type="text" class="form-control" readonly required [(ngModel)]="createdBy.id"
+             #createdBy.id="ngModel">
+    </div>
+
+    <!-- Route selection -->
+    <div class="form-group mb-3">
+      <label class="control-label" for="routeOrigin">Route</label>
+      <select class="form-select" aria-label="type" id="routeOrigin" name="routeOrigin" [(ngModel)]="routeFollowed.follows" #routeFollowed.routeOrigin="ngModel" required>
+        <option *ngFor="let route of routes" value="{{route.uri}}">{{route.title}}</option>
+      </select>
+    </div>
+
+    <!-- Duration input -->
+    <div class="form-group mb-3">
+      <label class="control-label" for="duration">Duration</label>
+      <input id="duration" name="duration" type="number" class="form-control" [(ngModel)]="routeFollowed.duration"
+             #duration="ngModel">
+    </div>
+
+    <!-- LevelUp input -->
+    <div class="form-group mb-3">
+      <label class="control-label" for="levelUp">Level up</label>
+      <input id="levelUp" name="levelUp" type="number" class="form-control" [(ngModel)]="routeFollowed.levelUp"
+           #levelUp="ngModel">
+    </div>
+
+    <!-- LevelDown input -->
+    <div class="form-group mb-3">
+      <label class="control-label" for="levelDown">Level down</label>
+      <input id="levelDown" name="levelDown" type="number" class="form-control" [(ngModel)]="routeFollowed.levelDown"
+           #levelDown="ngModel">
+    </div>
+
+    <!-- Buttons -->
+    <div class=" form-group fa-pull-right">
+      <button id="listBtn" type="button" [routerLink]="['/routeFollowed']"
+              class="btn btn-outline-primary pull-right">Back
+      </button>
+      <button id="submit" type="submit" [disabled]="!form.form.valid"
+              class="btn ms-3 btn-success pull-right">Submit
+      </button>
+    </div>
+
+  </fieldset>
+</form>

@@ -29,6 +29,14 @@
         </div>
       </li>
       <li class="nav-item" *ngIf="isRole('user')  || isRole('admin')" ngbDropdown>
+        <a class="nav-link dropdown-toggle" id="routeFollowedDropdown" role="button"
+           aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>RouteFollowed</a>
+        <div class="dropdown-menu" aria-labelledby="routeFollowedDropdown" ngbDropdownMenu>
+          <a class="dropdown-item" *ngIf="isRole('user')" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
+             [routerLink]="['/routeFollowed/create']"><span class="fas fa-user-circle"></span> Create</a>
+        </div>
+      </li>
+      <li class="nav-item" *ngIf="isRole('user')  || isRole('admin')" ngbDropdown>
         <a class="nav-link dropdown-toggle" id="coordinateDropdown" role="button"
            aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>Coordinate</a>
         <div class="dropdown-menu" aria-labelledby="coordinateDropdown" ngbDropdownMenu>
