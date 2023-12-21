@@ -9,7 +9,7 @@ When('I click on detail on first card', () => {
 });
 
 Then('I modify the route title: {string}, description: {string}',(title,description) => {
-  cy.wait(300);
+  cy.wait(1000);
   cy.get('#title').clear().type(title);
   cy.get('#description').clear().type(description);
   cy.get('#submit').click();
