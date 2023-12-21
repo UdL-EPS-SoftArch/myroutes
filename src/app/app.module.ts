@@ -32,7 +32,6 @@ import { RouteSearchComponent } from './routes/route-search/route-search.compone
 import { RouteFilterComponent } from './routes/route-filter/route-filter.component';
 import {PermissionsService } from "./login-basic/authentication.guard";
 
-
 @NgModule({
   declarations: [
     AppComponent,
