@@ -14,6 +14,7 @@ import { RouteCreateComponent } from './routes/route-create/route-create.compone
 import { RouteDetailComponent } from './routes/route-detail/route-detail.component';
 import { RouteEditComponent } from './routes/routes-edit/route-edit.component';
 import {CheckIsAdminGuard, CheckIsNotAdminGuard,CheckLoggedInGuard} from "./login-basic/authentication.guard";
+import {RouteVersionsCreateComponent} from "./route-versions/route-versions-create/route-versions-create.component";
 
 const routes: Routes = [
   { path: 'users/create', component: UserRegisterComponent},
@@ -28,9 +29,12 @@ const routes: Routes = [
   { path: 'routes/:id', component: RouteDetailComponent, canActivate: [CheckIsNotAdminGuard]},
   { path: 'routes', component: RouteListComponent, canActivate: [CheckLoggedInGuard] },
 
+  { path: 'route-versions-create', component: RouteVersionsCreateComponent, canActivate: [CheckIsNotAdminGuard] },
+
   { path: 'about', component: AboutComponent},
   { path: '404', component: NotFoundComponent},
   { path: '', redirectTo: 'about', pathMatch: 'full'},
+  { path: 'coordinates', loadChildren: () => import('./coordinate/coordinate-routing.module').then(m => m.CoordinateRoutingModule), canActivate: [CheckLoggedInGuard]},
 ];
 
 @NgModule({
