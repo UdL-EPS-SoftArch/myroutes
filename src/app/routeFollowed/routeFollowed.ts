@@ -1,6 +1,5 @@
 import { HateoasResource, Resource } from '@lagoshny/ngx-hateoas-client';
 import { User } from '../login-basic/user';
-import {Route} from "../routes/route";
 
 @HateoasResource('routeFolloweds')
 export class RouteFollowed extends Resource {
@@ -8,7 +7,7 @@ export class RouteFollowed extends Resource {
   duration: number;
   levelUp: number;
   levelDown: string;
-  follows: Route;
+  follows: string;
   createdBy: User;
   uri: string
 
