@@ -1,7 +1,7 @@
 import {When, Then} from 'cypress-cucumber-preprocessor/steps';
 
 When('I click on edit on first card', () => {
-  cy.get('.btn-outline-success').first().click();
+  cy.get('.btn-outline-success').contains('Edit').first().click();
 });
 
 When('I click on detail on first card', () => {
