@@ -5,8 +5,6 @@ import {User} from "../../login-basic/user";
 import {RouteFollowed} from "../routeFollowed";
 import {RouteFollowedService} from "../routeFollowed.service";
 import {AuthenticationBasicService} from "../../login-basic/authentication-basic.service";
-import { HttpClient} from '@angular/common/http';
-import {environment} from "../../../environments/environment";
 import {RouteService} from "../../routes/route.service";
 import {UserService} from "../../user/user.service";
 import {PagedResourceCollection} from "@lagoshny/ngx-hateoas-client";
@@ -28,8 +26,7 @@ export class RouteFollowedCreateComponent implements OnInit {
               private authenticationService: AuthenticationBasicService,
               private routeService: RouteService,
               private userService: UserService,
-              private routeFollowedService: RouteFollowedService,
-              private http: HttpClient) { }
+              private routeFollowedService: RouteFollowedService) { }
   ngOnInit(): void {
     this.createdBy = this.getCurrentUserName();
     this.creationDate = new Date();
@@ -46,7 +43,7 @@ export class RouteFollowedCreateComponent implements OnInit {
   onSubmit(): void {
     this.routeFollowed.createdBy = this.authenticationService.getCurrentUser();
     this.routeFollowedService.createResource({ body: this.routeFollowed }).subscribe(
-      (routeFollowed:RouteFollowed) => this.router.navigate([routeFollowed.uri]));
+      () => this.router.navigate([this.routeFollowed.follows]));
   }
 
   getCurrentUserName(): User {
