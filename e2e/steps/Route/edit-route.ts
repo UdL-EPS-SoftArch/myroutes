@@ -35,6 +35,5 @@ Then('I try to select detail on first element', (element) => {
   cy.get('.btn-outline-primary').should('not.exist');
 });
 
-Then
 
 
