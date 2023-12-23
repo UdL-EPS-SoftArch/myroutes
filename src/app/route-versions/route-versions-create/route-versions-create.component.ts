@@ -27,6 +27,6 @@ export class RouteVersionsCreateComponent implements OnInit{
   onSubmit(): void {
     this.routeVersion.versionOf = this.paramRoute
     this.routeVersionService.createResource({ body: this.routeVersion }).subscribe(
-      (routeVersion:RouteVersion) => this.router.navigate([routeVersion.uri]))
+      () => this.router.navigate([this.routeVersion.versionOf]))
   }
 }
