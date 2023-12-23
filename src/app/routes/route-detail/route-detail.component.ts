@@ -52,4 +52,5 @@ export class RouteDetailComponent implements OnInit {
     return this.getCurrentUserName() == this.route.createdBy?.username;
   }
 
+    protected readonly JSON = JSON;
 }
