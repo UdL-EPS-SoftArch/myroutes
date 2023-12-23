@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {RouteVersionsService} from "../route-versions.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {HttpClient} from "@angular/common/http";
 import {RouteVersion} from "../routeVersion.entity";
-import {Route} from "../../routes/route";
 
 @Component({
   selector: 'app-route-versions-create',
@@ -11,7 +9,7 @@ import {Route} from "../../routes/route";
   styleUrls: ['./route-versions-create.component.scss']
 })
 export class RouteVersionsCreateComponent implements OnInit{
-  public paramRoute: Route;
+  public paramRoute: string;
   public routeVersion: RouteVersion = new RouteVersion();
   public title: string;
 
@@ -23,7 +21,7 @@ export class RouteVersionsCreateComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.paramRoute = JSON.parse(this.route.snapshot.params['param']) as Route
+    this.paramRoute = this.route.snapshot.params['param'];
   }
 
   onSubmit(): void {
