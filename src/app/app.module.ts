@@ -32,8 +32,13 @@ import { RouteDeleteComponent } from './routes/route-delete/route-delete.compone
 import { RouteSearchComponent } from './routes/route-search/route-search.component';
 import { RouteFilterComponent } from './routes/route-filter/route-filter.component';
 import {PermissionsService } from "./login-basic/authentication.guard";
-import { RouteVersionsCreateComponent } from './route-versions/route-versions-create/route-versions-create.component';
+import {RouteFollowedCreateComponent} from "./routeFollowed/route-followed-create/route-followed-create.component";
+import {RouteFollowedDeleteComponent} from "./routeFollowed/route-followed-delete/route-followed-delete.component";
+import {RouteFollowedEditComponent} from "./routeFollowed/route-followed-edit/route-followed-edit.component";
+import {RouteFollowedListComponent} from "./routeFollowed/route-followed-list/route-followed-list.component";
+import {RouteFollowedDetailComponent} from "./routeFollowed/route-followed-detail/route-followed-detail.component";
 
+import { RouteVersionsCreateComponent } from './route-versions/route-versions-create/route-versions-create.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +59,11 @@ import { RouteVersionsCreateComponent } from './route-versions/route-versions-cr
     RouteDeleteComponent,
     RouteEditComponent,
     RouteDetailComponent,
+    RouteFollowedCreateComponent,
+    RouteFollowedDeleteComponent,
+    RouteFollowedEditComponent,
+    RouteFollowedListComponent,
+    RouteFollowedDetailComponent,
     RouteVersionsCreateComponent,
   ],
   imports: [
