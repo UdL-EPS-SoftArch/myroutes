@@ -22,6 +22,9 @@ import { RouteFollowedDetailComponent } from './routeFollowed/route-followed-det
 import { RouteFollowedDeleteComponent } from './routeFollowed/route-followed-delete/route-followed-delete.component';
 import { RouteFollowedEditComponent } from './routeFollowed/route-followed-edit/route-followed-edit.component';
 
+import {WaypointCreateComponent} from "./waypoint/waypoint-create/waypoint-create.component";
+import {WaypointListComponent} from "./waypoint/waypoint-list/waypoint-list.component";
+
 const routes: Routes = [
   { path: 'users/create', component: UserRegisterComponent},
   { path: 'users/:id/delete', component: UserDeleteComponent, canActivate: [CheckLoggedInGuard]},
@@ -42,6 +45,9 @@ const routes: Routes = [
   { path: 'routeFollowed/:id/edit', component: RouteFollowedEditComponent, canActivate: [CheckIsNotAdminGuard]},
   { path: 'routeFollowed/:id', component: RouteFollowedDetailComponent, canActivate: [CheckIsNotAdminGuard]},
   { path: 'routeFollowed', component: RouteFollowedListComponent, canActivate: [CheckIsNotAdminGuard] },
+
+  { path: 'waypoints/create', component: WaypointCreateComponent, canActivate: [CheckIsNotAdminGuard] },
+  { path: 'waypoints', component: WaypointListComponent, canActivate: [CheckIsNotAdminGuard] },
 
   { path: 'about', component: AboutComponent},
   { path: '404', component: NotFoundComponent},
