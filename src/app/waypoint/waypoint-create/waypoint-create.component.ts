@@ -1,23 +1,12 @@
-import {Component, NgModule, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Waypoint } from '../waypoint';
 import { Router } from '@angular/router';
 import { WaypointService } from '../waypoint.service';
 import { AuthenticationBasicService } from 'src/app/login-basic/authentication-basic.service';
-
-import {
-  AbstractControl,
-  FormControl,
-  FormGroup, ReactiveFormsModule,
-  ValidationErrors,
-  ValidatorFn,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators, } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PagedResourceCollection } from '@lagoshny/ngx-hateoas-client';
-
-import {RouterModule} from '@angular/router';
-import {Coordinate} from "../../coordinate/coordinate.entity";
-
+import { Coordinate } from "../../coordinate/coordinate.entity";
 
 @Component({
   selector: 'app-waypoint-create',
@@ -47,8 +36,7 @@ export class WaypointCreateComponent implements OnInit {
     this.waypoint = new Waypoint();
     this.waypointForm = new FormGroup({
       title: new FormControl(this.waypoint.title, [
-        Validators.required,
-        //this.titleValidator(),
+        Validators.required
       ]),
       description: new FormControl(this.titleInput),
       type: new FormControl(''),
@@ -68,7 +56,6 @@ export class WaypointCreateComponent implements OnInit {
         );
       });
   }
-
 
   open(content) {
     this.modalService

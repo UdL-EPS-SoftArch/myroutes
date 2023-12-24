@@ -4,9 +4,6 @@ import { WaypointService } from '../waypoint.service';
 import { PagedResourceCollection } from '@lagoshny/ngx-hateoas-client';
 import { Waypoint } from '../waypoint';
 import { AuthenticationBasicService } from 'src/app/login-basic/authentication-basic.service';
-import {environment} from "../../../environments/environment";
-import {Route} from "../../routes/route";
-import {User} from "../../login-basic/user";
 import {HttpClient} from "@angular/common/http";
 import {Coordinate} from "../../coordinate/coordinate.entity";
 
