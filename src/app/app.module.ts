@@ -31,6 +31,11 @@ import { RouteEditComponent } from './routes/routes-edit/route-edit.component';
 import { RouteDeleteComponent } from './routes/route-delete/route-delete.component';
 import { RouteSearchComponent } from './routes/route-search/route-search.component';
 import { RouteFilterComponent } from './routes/route-filter/route-filter.component';
+
+import {WaypointCreateComponent} from "./waypoint/waypoint-create/waypoint-create.component";
+import {WaypointListComponent} from "./waypoint/waypoint-list/waypoint-list.component";
+
+
 import {PermissionsService } from "./login-basic/authentication.guard";
 
 
@@ -53,6 +58,8 @@ import {PermissionsService } from "./login-basic/authentication.guard";
     RouteDeleteComponent,
     RouteEditComponent,
     RouteDetailComponent,
+    WaypointCreateComponent,
+    WaypointListComponent,
   ],
   imports: [
     BrowserModule,

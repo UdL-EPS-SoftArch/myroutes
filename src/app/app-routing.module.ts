@@ -14,7 +14,9 @@ import { RouteCreateComponent } from './routes/route-create/route-create.compone
 import { RouteDetailComponent } from './routes/route-detail/route-detail.component';
 import { RouteEditComponent } from './routes/routes-edit/route-edit.component';
 import {CheckIsAdminGuard, CheckIsNotAdminGuard,CheckLoggedInGuard} from "./login-basic/authentication.guard";
+
 import {WaypointCreateComponent} from "./waypoint/waypoint-create/waypoint-create.component";
+import {WaypointListComponent} from "./waypoint/waypoint-list/waypoint-list.component";
 
 const routes: Routes = [
   { path: 'users/create', component: UserRegisterComponent},
@@ -30,6 +32,7 @@ const routes: Routes = [
   { path: 'routes', component: RouteListComponent, canActivate: [CheckIsNotAdminGuard] },
 
   { path: 'waypoints/create', component: WaypointCreateComponent, canActivate: [CheckIsNotAdminGuard] },
+  { path: 'waypoints', component: WaypointListComponent, canActivate: [CheckIsNotAdminGuard] },
 
   { path: 'about', component: AboutComponent},
   { path: '404', component: NotFoundComponent},

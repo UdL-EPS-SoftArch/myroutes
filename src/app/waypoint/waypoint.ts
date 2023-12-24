@@ -1,4 +1,5 @@
 import { HateoasResource, Resource } from '@lagoshny/ngx-hateoas-client';
+import {Coordinate} from "../coordinate/coordinate.entity";
 
 @HateoasResource('waypoints')
 export class Waypoint extends Resource {
@@ -6,6 +7,7 @@ export class Waypoint extends Resource {
   title: string;
   description: string;
   type: string;
+  location: Coordinate;
   _links: any;
 
   constructor(values: object = {}) {
