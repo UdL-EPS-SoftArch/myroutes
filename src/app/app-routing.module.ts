@@ -14,6 +14,13 @@ import { RouteCreateComponent } from './routes/route-create/route-create.compone
 import { RouteDetailComponent } from './routes/route-detail/route-detail.component';
 import { RouteEditComponent } from './routes/routes-edit/route-edit.component';
 import {CheckIsAdminGuard, CheckIsNotAdminGuard,CheckLoggedInGuard} from "./login-basic/authentication.guard";
+import {RouteVersionsCreateComponent} from "./route-versions/route-versions-create/route-versions-create.component";
+
+import { RouteFollowedListComponent } from './routeFollowed/route-followed-list/route-followed-list.component';
+import { RouteFollowedCreateComponent } from './routeFollowed/route-followed-create/route-followed-create.component';
+import { RouteFollowedDetailComponent } from './routeFollowed/route-followed-detail/route-followed-detail.component';
+import { RouteFollowedDeleteComponent } from './routeFollowed/route-followed-delete/route-followed-delete.component';
+import { RouteFollowedEditComponent } from './routeFollowed/route-followed-edit/route-followed-edit.component';
 
 import {WaypointCreateComponent} from "./waypoint/waypoint-create/waypoint-create.component";
 import {WaypointListComponent} from "./waypoint/waypoint-list/waypoint-list.component";
@@ -29,7 +36,15 @@ const routes: Routes = [
   { path: 'routes/:id/delete', component: RouteDeleteComponent, canActivate: [CheckIsAdminGuard]},
   { path: 'routes/:id/edit', component: RouteEditComponent, canActivate: [CheckIsNotAdminGuard]},
   { path: 'routes/:id', component: RouteDetailComponent, canActivate: [CheckIsNotAdminGuard]},
-  { path: 'routes', component: RouteListComponent, canActivate: [CheckIsNotAdminGuard] },
+  { path: 'routes', component: RouteListComponent, canActivate: [CheckLoggedInGuard] },
+
+  { path: 'route-versions-create', component: RouteVersionsCreateComponent, canActivate: [CheckIsNotAdminGuard] },
+
+  { path: 'routeFollowed/create', component: RouteFollowedCreateComponent, canActivate: [CheckIsNotAdminGuard] },
+  { path: 'routeFollowed/:id/delete', component: RouteFollowedDeleteComponent, canActivate: [CheckIsNotAdminGuard]},
+  { path: 'routeFollowed/:id/edit', component: RouteFollowedEditComponent, canActivate: [CheckIsNotAdminGuard]},
+  { path: 'routeFollowed/:id', component: RouteFollowedDetailComponent, canActivate: [CheckIsNotAdminGuard]},
+  { path: 'routeFollowed', component: RouteFollowedListComponent, canActivate: [CheckIsNotAdminGuard] },
 
   { path: 'waypoints/create', component: WaypointCreateComponent, canActivate: [CheckIsNotAdminGuard] },
   { path: 'waypoints', component: WaypointListComponent, canActivate: [CheckIsNotAdminGuard] },

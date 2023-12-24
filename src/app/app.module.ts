@@ -37,7 +37,13 @@ import {WaypointListComponent} from "./waypoint/waypoint-list/waypoint-list.comp
 
 
 import {PermissionsService } from "./login-basic/authentication.guard";
+import {RouteFollowedCreateComponent} from "./routeFollowed/route-followed-create/route-followed-create.component";
+import {RouteFollowedDeleteComponent} from "./routeFollowed/route-followed-delete/route-followed-delete.component";
+import {RouteFollowedEditComponent} from "./routeFollowed/route-followed-edit/route-followed-edit.component";
+import {RouteFollowedListComponent} from "./routeFollowed/route-followed-list/route-followed-list.component";
+import {RouteFollowedDetailComponent} from "./routeFollowed/route-followed-detail/route-followed-detail.component";
 
+import { RouteVersionsCreateComponent } from './route-versions/route-versions-create/route-versions-create.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +66,12 @@ import {PermissionsService } from "./login-basic/authentication.guard";
     RouteDetailComponent,
     WaypointCreateComponent,
     WaypointListComponent,
+    RouteFollowedCreateComponent,
+    RouteFollowedDeleteComponent,
+    RouteFollowedEditComponent,
+    RouteFollowedListComponent,
+    RouteFollowedDetailComponent,
+    RouteVersionsCreateComponent
   ],
   imports: [
     BrowserModule,
