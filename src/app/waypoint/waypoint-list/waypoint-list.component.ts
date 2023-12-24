@@ -42,9 +42,9 @@ export class WaypointListComponent implements OnInit{
         this.totalWaypoints = page.totalElements;
         this.waypointsPagedResource = page;
         this.waypoints.map(waypoints => {
-          waypoints.getRelation('location')
+          waypoints.getRelation('coordinate')
             .subscribe((coordinate: Coordinate) => {
-              waypoints.location = coordinate;
+              waypoints.coordinate = coordinate;
             });
         });
       });
@@ -57,9 +57,9 @@ export class WaypointListComponent implements OnInit{
       (page: PagedResourceCollection<Waypoint>) => {
         this.waypoints = page.resources;
         this.waypoints.map(waypoint => {
-          waypoint.getRelation('location')
+          waypoint.getRelation('coordinate')
             .subscribe((coordinate: Coordinate) => {
-              waypoint.location = coordinate;
+              waypoint.coordinate = coordinate;
             });
         });
       });
