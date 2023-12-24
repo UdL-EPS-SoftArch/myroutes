@@ -98,9 +98,8 @@ export class WaypointCreateComponent implements OnInit {
     this.waypoint.type = this.waypointForm.get('type')?.value;
     this.waypointService
       .createResource({ body: this.waypoint })
-      .subscribe((waypoint: Waypoint) => {
-        const uri = (waypoint as any).uri;
-        this.router.navigate([uri]).then();
+      .subscribe(() => {
+        this.router.navigate(['/waypoints']).then();
       });
   }
 }
