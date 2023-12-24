@@ -32,10 +32,10 @@ export class WaypointListComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    this.http.get<any>(`${environment.API}/profile/waypoints`)
-      .subscribe(data => {
-        this.types = (data.alps.descriptor[0].descriptor[2].doc.value).split(',');
-      });
+    // this.http.get<any>(`${environment.API}/profile/waypoints`)
+    //   .subscribe(data => {
+    //     this.types = (data.alps.descriptor[0].descriptor[2].doc.value).split(',');
+    //   });
     this.waypointService.getPage({ pageParams: { size: this.pageSize }, sort: { username: 'ASC' } }).subscribe(
       (page: PagedResourceCollection<Waypoint>) => {
         this.waypoints = page.resources;
