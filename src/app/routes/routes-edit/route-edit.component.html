@@ -12,23 +12,25 @@
       <label class="control-label" for="type">Type</label>
       <input id="type" name="type" type="text" class="form-control" readonly
              [(ngModel)]="route.type" #type="ngModel">
-      <div class="invalid-feedback">A type is required</div>
     </div>
 
     <!-- Title input -->
-    <div class="form-group mb-3" [class.was-validated]="title.dirty || title.touched">
+    <div class="form-group mb-3" [class.was-validated]="title.invalid && (title.dirty || title.touched)">
       <label class="control-label" for="title">Title</label>
-      <input id="title" name="title" type="text" class="form-control" required
+      <input id="title" name="title" type="text" class="form-control" required minlength="3"
              [(ngModel)]="route.title" #title="ngModel">
-      <div class="invalid-feedback">A title is required</div>
+      <div class="text-danger"
+           *ngIf="title.invalid && (title.dirty || title.touched)">
+        <div *ngIf="title.errors?.['required']">Title is required.</div>
+        <div *ngIf="title.errors?.['minlength']">Title must be at least 3 characters long.</div>
+      </div>
     </div>
 
     <!-- Desctiption input -->
     <div class="form-group mb-3" [class.was-validated]="description.dirty || description.touched">
       <label class="control-label" for="description">Description</label>
-      <input id="description" name="description" type="text" class="form-control" required
+      <input id="description" name="description" type="text" class="form-control"
              [(ngModel)]="route.description" #description="ngModel">
-      <div class="invalid-feedback">A description is required</div>
     </div>
 
     <!-- Button -->

@@ -9,6 +9,7 @@ import {RouteVersion} from "../routeVersion.entity";
   styleUrls: ['./route-versions-create.component.scss']
 })
 export class RouteVersionsCreateComponent implements OnInit{
+  public paramRoute: string;
   public routeVersion: RouteVersion = new RouteVersion();
   public title: string;
 
@@ -20,11 +21,12 @@ export class RouteVersionsCreateComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.routeVersion.versionOf = this.route.snapshot.params['param']
+    this.paramRoute = this.route.snapshot.params['param'];
   }
 
   onSubmit(): void {
+    this.routeVersion.versionOf = this.paramRoute
     this.routeVersionService.createResource({ body: this.routeVersion }).subscribe(
-      (routeVersion:RouteVersion) => this.router.navigate([routeVersion.uri]))
+      () => this.router.navigate([this.routeVersion.versionOf]))
   }
 }

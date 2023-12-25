@@ -1,0 +1,72 @@
+.ng-invalid:not(form) {
+    border-left: 5px solid #a94442; /* red */
+  }
+  .form-error {
+    color: #a94442;
+  }
+  
+  .commonName-input {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  #commonName {
+    display: block;
+    width: 95%;
+  }
+  
+  #add-commonName {
+    height: 40px;
+    width: 40px;
+    background-color: green;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: white;
+  }
+  
+  .added-cards-section {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d4d4d4;
+    border-radius: 5px;
+  }
+  
+  .card {
+    background-color: #daf4ff;
+    display: inline-block;
+    height: auto;
+    padding: 6px 12px;
+    border-radius: 5px;
+    margin: 0 6px;
+  }
+  
+  .card-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .card-wrapper p {
+    margin-bottom: 0;
+    color: #17465a;
+    text-align: center;
+  }
+  
+  .remove-card-btn {
+    color: #17465a;
+    font-size: 0.9rem;
+    margin-left: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .checkbox-benefitialFor {
+    display: block;
+  }

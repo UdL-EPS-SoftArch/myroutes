@@ -22,10 +22,18 @@
         <a class="nav-link dropdown-toggle" id="routeDropdown" role="button"
            aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>Routes</a>
         <div class="dropdown-menu" aria-labelledby="routeDropdown" ngbDropdownMenu>
-          <a class="dropdown-item" *ngIf="isRole('user')" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
+          <a class="dropdown-item" id="createRoute" *ngIf="isRole('user')" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
              [routerLink]="['/routes/create']"><span class="fas fa-user-circle"></span> Create</a>
-          <a class="dropdown-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
+          <a class="dropdown-item" id="ListRoutes" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
              [routerLink]="['/routes']"><span class="fas fa-user-circle"></span> List</a>
+        </div>
+      </li>
+      <li class="nav-item" *ngIf="isRole('user')  || isRole('admin')" ngbDropdown>
+        <a class="nav-link dropdown-toggle" id="routeFollowedDropdown" role="button"
+           aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>RouteFollowed</a>
+        <div class="dropdown-menu" aria-labelledby="routeFollowedDropdown" ngbDropdownMenu>
+          <a class="dropdown-item" *ngIf="isRole('user')" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
+             [routerLink]="['/routeFollowed/create']"><span class="fas fa-user-circle"></span> Create</a>
         </div>
       </li>
       <li class="nav-item" *ngIf="isRole('user')  || isRole('admin')" ngbDropdown>
@@ -36,6 +44,16 @@
              [routerLink]="['/coordinates/create']"><span class="fas fa-user-circle"></span> Create</a>
           <a class="dropdown-item coordinateListNavbar" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
              [routerLink]="['/coordinates']"><span class="fas fa-user-circle"></span> List</a>
+        </div>
+      </li>
+      <li class="nav-item" *ngIf="isRole('user')  || isRole('admin')" ngbDropdown>
+        <a class="nav-link dropdown-toggle" id="waypointDropdown" role="button"
+           aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>Waypoint</a>
+        <div class="dropdown-menu" aria-labelledby="coordinateDropdown" ngbDropdownMenu>
+          <a class="dropdown-item" *ngIf="isRole('user')" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
+             [routerLink]="['/waypoints/create']"><span class="fas fa-user-circle"></span> Create</a>
+          <a class="dropdown-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"
+             [routerLink]="['/waypoints']"><span class="fas fa-user-circle"></span> List</a>
         </div>
       </li>
     </ul>
