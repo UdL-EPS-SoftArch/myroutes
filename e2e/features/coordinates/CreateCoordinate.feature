@@ -8,8 +8,8 @@ Feature: Create Coordinate
     When I go to the coordinate list page
     And I click on add coordinte button
     And I fill the form with
-      | FIELD            | VALUE          |
-      | coordinate   |   41.40338,2.17403  |
+      | FIELD      | VALUE            |
+      | coordinate | 41.40338,2.17403 |
     And I click the "Create" button
     Then I am redirected to the coordinate detail page
 
@@ -19,6 +19,6 @@ Feature: Create Coordinate
     When I go to the coordinate list page
     And I click on add coordinte button
     And I fill the form with
-      | FIELD            | VALUE          |
-      | coordinate   |   300.40338,2.17403  |
+      | FIELD      | VALUE             |
+      | coordinate | 300.40338,2.17403 |
     Then Create button should be disabled
