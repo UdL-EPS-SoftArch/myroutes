@@ -1,6 +1,4 @@
 import {Given, When, Then, And} from 'cypress-cucumber-preprocessor/steps';
-import { DataTable } from '@cucumber/cucumber';
-import { goToHomepage, login, logout, clickMenuOption } from "../../cypress/support/commands";
 
 Given('I\'m in the homepage logged in as user with username {string} and password {string}', (username,password) => {
   cy.visit('http://localhost:4200');

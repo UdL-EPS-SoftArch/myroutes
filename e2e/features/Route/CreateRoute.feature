@@ -3,10 +3,9 @@ Feature: Create a new route
   As a user
   I want to create a new route
 
-  Scenario: Create a new route with logged in user
+  Scenario: Create a new route
     Given I'm in the homepage logged in as user with username "demo" and password "password"
-    When I click on the "Routes" menu option with class ".nav-link"
-    And I click on the "Create" menu option with class ".dropdown-item"
+    When I click on the "Route" menu option
     And I fill the form with
       | FIELD       | VALUE         |
       | title       | testRoute     |
@@ -14,6 +13,7 @@ Feature: Create a new route
     And Select type "Running" from the dropdown of types
     And I click the "Submit" button
     Then I've created a new route with creation user "demo", title "testRoute", description "That's a test route to make e2e tests" and type "Running"
+    Then Logout and delete first route
 
   Scenario: Create a new route with logged in admin
     Given I'm in the homepage logged in as user with username "root" and password "password"

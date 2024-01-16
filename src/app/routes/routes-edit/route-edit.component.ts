@@ -20,7 +20,6 @@ export class RouteEditComponent implements OnInit{
               private location: Location) { }
 
   ngOnInit(): void {
-
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     this.routesService.getResource(id).subscribe(
       (r: Route) => {this.route = r; this.route.id = id;});
