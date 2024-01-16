@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs/internal/Observable";
 import { HateoasResourceOperation, ResourceCollection } from "@lagoshny/ngx-hateoas-client";
 import { Route } from "./route";
+import {User} from "../login-basic/user";
 
 @Injectable({providedIn: "root"})
 export class RouteService extends HateoasResourceOperation<Route> {
@@ -10,7 +11,7 @@ export class RouteService extends HateoasResourceOperation<Route> {
     super(Route);
   }
 
-  public findByCreatedBy(creator: string): Observable<ResourceCollection<Route>> {
+  public findByCreatedBy(creator: User): Observable<ResourceCollection<Route>> {
     return this.searchCollection("findByCreatedBy", { params: { creator: creator } })
   }
 
