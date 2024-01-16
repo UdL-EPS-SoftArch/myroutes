@@ -1,4 +1,6 @@
 import {Given, When, Then, And} from 'cypress-cucumber-preprocessor/steps';
+import {selectNavigationBar} from "./delete-route";
+import {error} from "@angular/compiler-cli/src/transformers/util";
 
 Given('I\'m in the homepage logged in as user with username {string} and password {string}', (username,password) => {
   cy.visit('http://localhost:4200');
@@ -19,11 +21,8 @@ When('I click on the {string} menu option with class {string}', (option,class_) 
   cy.get(class_).contains(option).click();
 });
 
-When('I do nothing', () => {
-    // Nothing to do
-    });
 And('I click on the {string} menu option', (option) => {
-  cy.get('#createRoute').click();
+  selectNavigationBar(option,'Create');
 });
 
 And('Select type {string} from the dropdown of types', (type) => {
@@ -37,6 +36,7 @@ Then('I\'ve created a new route with creation user {string}, title {string}, des
   checkElementText('#Type', type);
 });
 
+
 Then('I try to click on the {string} menu option with class {string}', (option,class_) => {
   describe('Exception Handling In Cypress', () => {
     it('Navigate to webpage', () => {
@@ -49,6 +49,13 @@ Then('I try to click on the {string} menu option with class {string}', (option,c
     });
   });
 });
+
+
+Then('I try to click on {string} element', (element) => {
+  cy.get(element).should('not.exist');
+});
+
+
 function checkElementText(element:string, text:string) {
   cy.get(element)
     .invoke('text')

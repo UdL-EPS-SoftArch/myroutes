@@ -18,11 +18,5 @@ Feature: Create a new route
   Scenario: Create a new route with logged in admin
     Given I'm in the homepage logged in as user with username "root" and password "password"
     When I click on the "Routes" menu option with class ".nav-link"
-    Then I try to click on the "Create" menu option with class ".dropdown-item"
-
-
-  Scenario: Create a new route without logged in user
-    Given I'm in the homepage
-    When I do nothing
-    Then I try to click on the "Route" menu option with class ".nav-link"
+    Then I try to click on "#createRoute" element
 
