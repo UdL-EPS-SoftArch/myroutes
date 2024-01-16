@@ -14,3 +14,9 @@ Feature: Create a new route
     And I click the "Submit" button
     Then I've created a new route with creation user "demo", title "testRoute", description "That's a test route to make e2e tests" and type "Running"
     Then Logout and delete first route
+
+  Scenario: Create a new route with logged in admin
+    Given I'm in the homepage logged in as user with username "root" and password "password"
+    When I click on the "Routes" menu option with class ".nav-link"
+    Then I try to click on "#createRoute" element
+
