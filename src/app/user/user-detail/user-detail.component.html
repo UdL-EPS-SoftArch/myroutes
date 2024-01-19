@@ -39,7 +39,7 @@
       <h2>My routes Followed</h2>
     </button>
     <button class="btn btn-outline-secondary" id="btnMyRoutesVersion" data-toggle="collapse" data-target="#collapseMyRoutesVersion" aria-expanded="true" aria-controls="collapseMyRoutesVersion" (click)="swapClass('btnMyRoutesVersion',['btnMyRoutes','btnMyRoutesFollowed'])">
-      <h2>My routes Version</h2>
+      <h2>My route Versions</h2>
     </button>
   </div>
 
@@ -99,22 +99,22 @@
         <thead>
         <tr>
           <th scope="col">Title</th>
-          <th scope="col">Type</th>
-          <th scope="col">Creation date</th>
           <th scope="col">Created By</th>
+          <th scope="col">Creation date</th>
+          <th scope="col">Version of</th>
           <th scope="col">Actions</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let route of routes">
-          <th scope="row">{{route.title}}</th>
-          <td>{{route.type}}</td>
-          <td>{{route.creationDate | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
-          <td>{{route.createdBy?.username}}</td>
+        <tr *ngFor="let version of routesVersions">
+          <th scope="row">{{version.title}}</th>
+          <td>{{version.createdBy?.username}}</td>
+          <td>{{version.creationDate | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
+          <td>{{version.versionOf}}</td>
           <td> <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" *ngIf="currentUserEdit(route.createdBy?.username) && !isRole('admin')" [routerLink]="[route.uri+'/edit']" class="btn col-6 m-1 btn-outline-success">Edit</button>
-            <button type="button" *ngIf="!isRole('admin')" [routerLink]="[route.uri]" class="btn col-6 m-1 btn-outline-primary">Detail</button>
-            <button type="button" *ngIf="isRole('admin')" [routerLink]="[route.uri + '/delete']" class="btn col-6 m-1 btn-outline-danger">Delete</button>
+            <button type="button" *ngIf="currentUserEdit(version.createdBy?.username) && !isRole('admin')" [routerLink]="[version.uri+'/edit']" class="btn col-6 m-1 btn-outline-success">Edit</button>
+            <button type="button" *ngIf="!isRole('admin')" [routerLink]="[version.uri]" class="btn col-6 m-1 btn-outline-primary">Detail</button>
+            <button type="button" *ngIf="isRole('admin')" [routerLink]="[version.uri + '/delete']" class="btn col-6 m-1 btn-outline-danger">Delete</button>
           </div></td>
         </tr>
         </tbody>
