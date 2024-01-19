@@ -60,7 +60,11 @@ export class UserDetailComponent implements OnInit {
   }
 
   swapClass(activateId: string,deactivateIds:string[]): void {
-    var element = document.getElementById(activateId).classList.replace('btn-outline-secondary', 'btn-secondary');
+    var element = document.getElementById(activateId).classList;
+    if (element.contains('btn-secondary'))
+      element.replace('btn-secondary', 'btn-outline-secondary');
+    else
+      element.replace('btn-outline-secondary', 'btn-secondary');
     deactivateIds.forEach((deactivateId) => { document.getElementById(deactivateId).classList.replace('btn-secondary', 'btn-outline-secondary'); });
   }
 }
