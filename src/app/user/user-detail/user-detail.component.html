@@ -72,23 +72,25 @@
       <table class="table table-striped">
         <thead>
         <tr>
-          <th scope="col">Title</th>
-          <th scope="col">Type</th>
+          <th scope="col">Duration</th>
+          <th scope="col">Level up / Level down</th>
+          <th scope="col">Follows</th>
           <th scope="col">Creation date</th>
-          <th scope="col">Created By</th>
+          <th scope="col">Created by</th>
           <th scope="col">Actions</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let route of routes">
-          <th scope="row">{{route.title}}</th>
-          <td>{{route.type}}</td>
-          <td>{{route.creationDate | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
-          <td>{{route.createdBy?.username}}</td>
+        <tr *ngFor="let followed of routesFollowed">
+          <th scope="row">{{followed.duration}}</th>
+          <td>{{followed.levelUp}} / {{followed.levelDown}}</td>
+          <td>{{followed.follows}}</td>
+          <td>{{followed.creationDate | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
+          <td>{{followed.createdBy?.username}}</td>
           <td> <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" *ngIf="currentUserEdit(route.createdBy?.username) && !isRole('admin')" [routerLink]="[route.uri+'/edit']" class="btn col-6 m-1 btn-outline-success">Edit</button>
-            <button type="button" *ngIf="!isRole('admin')" [routerLink]="[route.uri]" class="btn col-6 m-1 btn-outline-primary">Detail</button>
-            <button type="button" *ngIf="isRole('admin')" [routerLink]="[route.uri + '/delete']" class="btn col-6 m-1 btn-outline-danger">Delete</button>
+            <button type="button" *ngIf="currentUserEdit(followed.createdBy?.username) && !isRole('admin')" [routerLink]="[followed.uri+'/edit']" class="btn col-6 m-1 btn-outline-success">Edit</button>
+            <button type="button" *ngIf="!isRole('admin')" [routerLink]="[followed.uri]" class="btn col-6 m-1 btn-outline-primary">Detail</button>
+            <button type="button" *ngIf="isRole('admin')" [routerLink]="[followed.uri + '/delete']" class="btn col-6 m-1 btn-outline-danger">Delete</button>
           </div></td>
         </tr>
         </tbody>
