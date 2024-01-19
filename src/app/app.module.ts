@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {NgModule, isDevMode} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgxHateoasClientConfigurationService, NgxHateoasClientModule} from '@lagoshny/ngx-hateoas-client';
 import {environment} from '../environments/environment';
@@ -31,6 +31,11 @@ import { RouteEditComponent } from './routes/routes-edit/route-edit.component';
 import { RouteDeleteComponent } from './routes/route-delete/route-delete.component';
 import { RouteSearchComponent } from './routes/route-search/route-search.component';
 import { RouteFilterComponent } from './routes/route-filter/route-filter.component';
+
+import {WaypointCreateComponent} from "./waypoint/waypoint-create/waypoint-create.component";
+import {WaypointListComponent} from "./waypoint/waypoint-list/waypoint-list.component";
+
+
 import {PermissionsService } from "./login-basic/authentication.guard";
 import {RouteFollowedCreateComponent} from "./routeFollowed/route-followed-create/route-followed-create.component";
 import {RouteFollowedDeleteComponent} from "./routeFollowed/route-followed-delete/route-followed-delete.component";
@@ -39,6 +44,7 @@ import {RouteFollowedListComponent} from "./routeFollowed/route-followed-list/ro
 import {RouteFollowedDetailComponent} from "./routeFollowed/route-followed-detail/route-followed-detail.component";
 
 import { RouteVersionsCreateComponent } from './route-versions/route-versions-create/route-versions-create.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -59,12 +65,14 @@ import { RouteVersionsCreateComponent } from './route-versions/route-versions-cr
     RouteDeleteComponent,
     RouteEditComponent,
     RouteDetailComponent,
+    WaypointCreateComponent,
+    WaypointListComponent,
     RouteFollowedCreateComponent,
     RouteFollowedDeleteComponent,
     RouteFollowedEditComponent,
     RouteFollowedListComponent,
     RouteFollowedDetailComponent,
-    RouteVersionsCreateComponent,
+    RouteVersionsCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +87,13 @@ import { RouteVersionsCreateComponent } from './route-versions/route-versions-cr
     ErrorHandlerModule,
     NgbModule,
     ReactiveFormsModule,
-    CoordinateModule
+    CoordinateModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
