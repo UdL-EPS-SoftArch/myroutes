@@ -29,45 +29,99 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="card col-lg-4 col-md-6 col-sm-12 col-xs-12" *ngFor="let route of routes">
-    <div class="card-block">
-      <div class="card-header row m-1 text-center" >
-        <h5>Route</h5>
-      </div>
-      <div class="card-body row m-1">
-        <div class="col-md-6 p-3">
-          <h6 class="card-subtitle text-muted">CreatedBy</h6>
-          <p class="card-text">{{route.createdBy?.username}}</p>
-        </div>
-        <div class="col-md-6 p-3">
-          <h6 class="card-subtitle text-muted">Creation date</h6>
-          <p class="card-text">{{route.creationDate | date: 'dd/MM/yyyy HH:mm:ss'}}</p>
-        </div>
-        <div class="col-md-6 p-3">
-          <h6 class="card-subtitle text-muted">Title</h6>
-          <p class="card-text">{{route.title}}</p>
-        </div>
-        <div class="col-md-6 p-3">
-          <h6 class="card-subtitle text-muted">Type</h6>
-          <p class="card-text">{{route.type}}</p>
-        </div>
-        <div class="col-lg12 col-md-12 p-3">
-          <h6 class="card-subtitle text-muted">Description</h6>
-          <p class="card-text">{{route.description}}</p>
-        </div>
-      </div>
-      <div class="card-footer text-right row">
-        <div class="btn-group" role="group" aria-label="Basic example">
-          <button type="button" *ngIf="currentUserEdit(route.createdBy?.username) && !isRole('admin')" [routerLink]="[route.uri+'/edit']" class="btn col-6 m-1 btn-outline-success">Edit</button>
-          <button type="button" *ngIf="!isRole('admin')" [routerLink]="[route.uri]" class="btn col-6 m-1 btn-outline-primary">Detail</button>
-          <button type="button" *ngIf="isRole('admin')" [routerLink]="[route.uri + '/delete']" class="btn col-6 m-1 btn-outline-danger">Delete</button>
-        </div>
-      </div>
+<div id="accordion" class="row">
+
+  <div id="tableButtons" class="btn-group">
+    <button class="btn btn-outline-secondary" id="btnMyRoutes" data-toggle="collapse" data-target="#collapseMyRoutes" aria-expanded="true" aria-controls="collapseMyRoutes" (click)="swapClass('btnMyRoutes',['btnMyRoutesFollowed','btnMyRoutesVersion'])">
+      <h2>My routes</h2>
+    </button>
+    <button class="btn btn-outline-secondary" id="btnMyRoutesFollowed" data-toggle="collapse" data-target="#collapseMyRoutesFollowed" aria-expanded="true" aria-controls="collapseMyRoutesFollowed" (click)="swapClass('btnMyRoutesFollowed',['btnMyRoutes','btnMyRoutesVersion'])">
+      <h2>My routes Followed</h2>
+    </button>
+    <button class="btn btn-outline-secondary" id="btnMyRoutesVersion" data-toggle="collapse" data-target="#collapseMyRoutesVersion" aria-expanded="true" aria-controls="collapseMyRoutesVersion" (click)="swapClass('btnMyRoutesVersion',['btnMyRoutes','btnMyRoutesFollowed'])">
+      <h2>My route Versions</h2>
+    </button>
+  </div>
+
+  <div id="tables">
+    <div id="collapseMyRoutes" class="collapse" aria-labelledby="headingMyRoutes" data-parent="#accordion">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Type</th>
+          <th scope="col">Creation date</th>
+          <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let route of routes">
+          <th scope="row">{{route.title}}</th>
+          <td>{{route.type}}</td>
+          <td>{{route.creationDate | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
+          <td> <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" *ngIf="currentUserEdit(route.createdBy?.username) && !isRole('admin')" [routerLink]="[route.uri+'/edit']" class="btn col-6 m-1 btn-outline-success">Edit</button>
+            <button type="button" *ngIf="!isRole('admin')" [routerLink]="[route.uri]" class="btn col-6 m-1 btn-outline-primary">Detail</button>
+            <button type="button" *ngIf="isRole('admin')" [routerLink]="[route.uri + '/delete']" class="btn col-6 m-1 btn-outline-danger">Delete</button>
+          </div></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="collapseMyRoutesFollowed" class="collapse" aria-labelledby="headingMyRoutesFollowed" data-parent="#accordion">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">Duration</th>
+          <th scope="col">Level up / Level down</th>
+          <th scope="col">Follows</th>
+          <th scope="col">Creation date</th>
+          <th scope="col">Created by</th>
+          <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let followed of routesFollowed">
+          <th scope="row">{{followed.duration}}</th>
+          <td>{{followed.levelUp}} / {{followed.levelDown}}</td>
+          <td>{{followed.follows}}</td>
+          <td>{{followed.creationDate | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
+          <td>{{followed.createdBy?.username}}</td>
+          <td> <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" *ngIf="currentUserEdit(followed.createdBy?.username) && !isRole('admin')" [routerLink]="[followed.uri+'/edit']" class="btn col-6 m-1 btn-outline-success">Edit</button>
+            <button type="button" *ngIf="!isRole('admin')" [routerLink]="[followed.uri]" class="btn col-6 m-1 btn-outline-primary">Detail</button>
+            <button type="button" *ngIf="isRole('admin')" [routerLink]="[followed.uri + '/delete']" class="btn col-6 m-1 btn-outline-danger">Delete</button>
+          </div></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="collapseMyRoutesVersion" class="collapse" aria-labelledby="headingMyRoutesVersion" data-parent="#accordion">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Created By</th>
+          <th scope="col">Creation date</th>
+          <th scope="col">Version of</th>
+          <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let version of routesVersions">
+          <th scope="row">{{version.title}}</th>
+          <td>{{version.createdBy?.username}}</td>
+          <td>{{version.creationDate | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
+          <td>{{version.versionOf}}</td>
+          <td> <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" *ngIf="currentUserEdit(version.createdBy?.username) && !isRole('admin')" [routerLink]="[version.uri+'/edit']" class="btn col-6 m-1 btn-outline-success">Edit</button>
+            <button type="button" *ngIf="!isRole('admin')" [routerLink]="[version.uri]" class="btn col-6 m-1 btn-outline-primary">Detail</button>
+            <button type="button" *ngIf="isRole('admin')" [routerLink]="[version.uri + '/delete']" class="btn col-6 m-1 btn-outline-danger">Delete</button>
+          </div></td>
+        </tr>
+        </tbody>
+      </table>
     </div>
   </div>
-</div>
-<div class="row">
-  <hr class="my-3">
 </div>
 
