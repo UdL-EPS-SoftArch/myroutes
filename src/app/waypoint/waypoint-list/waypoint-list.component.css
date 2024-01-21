@@ -1,0 +1,56 @@
+/* waypoint-list.component.css */
+
+.container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.display-4 {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.jumbotron {
+  margin-bottom: 20px;
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.float-right {
+  float: right;
+}
+
+.mb-3 {
+  margin-bottom: 15px;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.card {
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.card-subtitle {
+  color: #6c757d;
+}
+
+.card-text {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-content-center {
+  justify-content: center;
+}

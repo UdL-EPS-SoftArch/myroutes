@@ -1,69 +1,77 @@
-<h1>Waypoints</h1>
+<div class="container">
+  <h1 class="display-4">Waypoints</h1>
 
-<div class="jumbotron" *ngIf="isRole('admin')">
-  <button
-    class="btn btn-success pull-right add-take mb-3"
-    id="createWaypoint"
-    [routerLink]="['/waypoints/create']"
-  >
-    Add Seed
-  </button>
-</div>
-<div class="row">
-
-  <div class="col-md-2 dropdown">
+  <div class="jumbotron" *ngIf="isRole('user')">
     <button
-      class="btn btn-secondary dropdown-toggle"
-      type="button"
-      id="dropdownMenuButton1"
-      data-bs-toggle="dropdown"
-      aria-expanded="false"
+      class="btn btn-success float-right mb-3"
+      id="createWaypoint"
+      [routerLink]="['/waypoints/create']"
     >
-      Sort by: {{ sortBy }}
+      Create More Waypoints
     </button>
-
   </div>
-  <div class="col-md-1 dropdown">
-    <button
-      class="btn btn-secondary dropdown-toggle"
-      type="button"
-      id="dropdownMenuButton2"
-      data-bs-toggle="dropdown"
-      aria-expanded="false"
-    >
-      {{ sortOrder }}
-    </button>
 
-  </div>
-</div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="btn-group">
+        <button
+          class="btn btn-secondary dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton1"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Sort by: {{ sortBy }}
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <!-- Opciones -->
+        </ul>
+      </div>
+    </div>
 
-<div class="card mb-1 mt-3" *ngFor="let waypoint of waypoints">
-  <div class="card-block row m-1 col-12" (click)="detail(waypoint)">
-    <div class="card-body row align-items-center">
-<!--      <div class="col-6 mt-1">-->
-<!--        <h6 class="card-subtitle text-muted">ID</h6>-->
-<!--        <a class="card-text">{{ waypoint.id }}</a>-->
-<!--      </div>-->
-      <div class="col-6 mt-1">
-        <h6 class="card-subtitle text-muted">Title</h6>
-        <p class="card-text">{{ waypoint.title }}</p>
-      </div>
-      <div class="col-6 mt-1">
-        <h6 class="card-subtitle text-muted">Description</h6>
-        <p class="card-text">{{ waypoint.description }}</p>
-      </div>
-      <div class="col-6 mt-1">
-        <h6 class="card-subtitle text-muted">Type</h6>
-        <p class="card-text">{{ waypoint.type }}</p>
+    <div class="col-md-6">
+      <div class="btn-group">
+        <button
+          class="btn btn-secondary dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton2"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          {{ sortOrder }}
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+          <!-- Opciones -->
+        </ul>
       </div>
     </div>
   </div>
-</div>
 
-<ngb-pagination
-  class="d-flex justify-content-center"
-  [(page)]="page"
-  [pageSize]="pageSize"
-  [collectionSize]="totalWaypoints"
-  (pageChange)="changePage()"
-></ngb-pagination>
+  <div class="card my-3" *ngFor="let waypoint of waypoints" (click)="detail(waypoint)">
+    <div class="card-body row align-items-center">
+      <div class="col-6">
+        <h6 class="card-subtitle text-muted">Title</h6>
+        <p class="card-text">{{ waypoint.title }}</p>
+      </div>
+      <div class="col-6">
+        <h6 class="card-subtitle text-muted">Description</h6>
+        <p class="card-text">{{ waypoint.description }}</p>
+      </div>
+      <div class="col-6">
+        <h6 class="card-subtitle text-muted">Type</h6>
+        <p class="card-text">{{ waypoint.type }}</p>
+      </div>
+      <div class="col-12 text-right">
+        <a [routerLink]="[waypoint.uri.endsWith('/') ? waypoint.uri.slice(0, -1) : waypoint.uri, 'delete']" class="btn btn-primary">Delete</a>
+      </div>
+    </div>
+  </div>
+
+  <ngb-pagination
+    class="d-flex justify-content-center"
+    [(page)]="page"
+    [pageSize]="pageSize"
+    [collectionSize]="totalWaypoints"
+    (pageChange)="changePage()"
+  ></ngb-pagination>
+</div>
