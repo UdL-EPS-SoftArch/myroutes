@@ -34,7 +34,9 @@ import { RouteFilterComponent } from './routes/route-filter/route-filter.compone
 
 import {WaypointCreateComponent} from "./waypoint/waypoint-create/waypoint-create.component";
 import {WaypointListComponent} from "./waypoint/waypoint-list/waypoint-list.component";
-
+import {WaypointDetailComponent} from "./waypoint/waypoint-detail/waypoint-detail.component";
+import {WaypointEditComponent} from "./waypoint/waypoint-edit/waypoint-edit.component";
+import {WaypointDeleteComponent} from "./waypoint/waypoint-delete/waypoint-delete.component";
 
 import {PermissionsService } from "./login-basic/authentication.guard";
 import {RouteFollowedCreateComponent} from "./routeFollowed/route-followed-create/route-followed-create.component";
@@ -45,6 +47,7 @@ import {RouteFollowedDetailComponent} from "./routeFollowed/route-followed-detai
 
 import { RouteVersionsCreateComponent } from './route-versions/route-versions-create/route-versions-create.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import {NgxDatatableModule} from "@swimlane/ngx-datatable";
 
 @NgModule({
   declarations: [
@@ -67,6 +70,9 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     RouteDetailComponent,
     WaypointCreateComponent,
     WaypointListComponent,
+    WaypointDetailComponent,
+    WaypointEditComponent,
+    WaypointDeleteComponent,
     RouteFollowedCreateComponent,
     RouteFollowedDeleteComponent,
     RouteFollowedEditComponent,
@@ -93,7 +99,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
-    })
+    }),
+    NgxDatatableModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
