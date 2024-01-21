@@ -51,6 +51,21 @@ export class RouteVersionsListComponent implements OnInit {
       });
   }
 
+  changePage(): void {
+    this.routesPagedResource.customPage(
+      {pageParams: {page: this.page - 1, size: this.pageSize},
+        sort: {name: 'ASC'}}).subscribe(
+      (page: PagedResourceCollection<RouteVersion>) => {
+        this.routeVersions = page.resources;
+        this.routeVersions.map(routes => {
+          routes.getRelation('createdBy')
+            .subscribe((user: User) => {
+              routes.createdBy = user;
+            });
+        });
+      });
+  }
+
   isRole(role: string): boolean {
     return this.authenticationService.isRole(role);
   }
