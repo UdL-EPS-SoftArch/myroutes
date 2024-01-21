@@ -41,12 +41,13 @@ export class WaypointListComponent implements OnInit{
         this.waypoints = page.resources;
         this.totalWaypoints = page.totalElements;
         this.waypointsPagedResource = page;
-        this.waypoints.map(waypoints => {
-          waypoints.getRelation('coordinate')
-            .subscribe((coordinate: Coordinate) => {
-              waypoints.coordinate = coordinate;
-            });
-        });
+
+        // this.waypoints.map(waypoints => {
+        //   waypoints.getRelation('coordinate')
+        //     .subscribe((coordinate: Coordinate) => {
+        //       waypoints.location = coordinate;
+        //     });
+        // });
       });
   }
 
@@ -56,12 +57,12 @@ export class WaypointListComponent implements OnInit{
         sort: {name: 'ASC'}}).subscribe(
       (page: PagedResourceCollection<Waypoint>) => {
         this.waypoints = page.resources;
-        this.waypoints.map(waypoint => {
-          waypoint.getRelation('coordinate')
-            .subscribe((coordinate: Coordinate) => {
-              waypoint.coordinate = coordinate;
-            });
-        });
+        // this.waypoints.map(waypoint => {
+        //   waypoint.getRelation('coordinate')
+        //     .subscribe((coordinate: Coordinate) => {
+        //       waypoint.location = coordinate;
+        //     });
+        // });
       });
   }
 
