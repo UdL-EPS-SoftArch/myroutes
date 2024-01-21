@@ -61,8 +61,8 @@
         <h6 class="card-subtitle text-muted">Type</h6>
         <p class="card-text">{{ waypoint.type }}</p>
       </div>
-      <div class="col-12 text-right">
-        <a [routerLink]="[waypoint.uri.endsWith('/') ? waypoint.uri.slice(0, -1) : waypoint.uri, 'delete']" class="btn btn-primary">Delete</a>
+      <div class="col-12 text-right" *ngIf="isRole('admin')">
+        <a [routerLink]="[waypoint.uri.endsWith('/') ? waypoint.uri.slice(0, -1) : waypoint.uri, 'delete']" class="btn btn-primary btn-delete">Delete</a>
       </div>
     </div>
   </div>

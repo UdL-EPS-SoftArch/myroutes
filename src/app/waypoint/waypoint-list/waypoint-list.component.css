@@ -54,3 +54,9 @@
 .justify-content-center {
   justify-content: center;
 }
+
+.btn-delete {
+  background-color: #dc3545;
+  color: #fff;
+}
+

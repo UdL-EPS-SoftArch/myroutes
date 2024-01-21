@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Waypoint } from '../waypoint';
-import { Router } from '@angular/router';
-import { WaypointService } from '../waypoint.service';
-import { AuthenticationBasicService } from 'src/app/login-basic/authentication-basic.service';
-import { FormControl, FormGroup, Validators, } from '@angular/forms';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { PagedResourceCollection } from '@lagoshny/ngx-hateoas-client';
-import { Coordinate } from "../../coordinate/coordinate.entity";
+import {Component, OnInit} from '@angular/core';
+import {Waypoint} from '../waypoint';
+import {Router} from '@angular/router';
+import {WaypointService} from '../waypoint.service';
+import {AuthenticationBasicService} from 'src/app/login-basic/authentication-basic.service';
+import {FormControl, FormGroup, Validators,} from '@angular/forms';
+import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {PagedResourceCollection} from '@lagoshny/ngx-hateoas-client';
+import {Coordinate} from "../../coordinate/coordinate.entity";
 
 @Component({
   selector: 'app-waypoint-create',
@@ -23,14 +23,16 @@ export class WaypointCreateComponent implements OnInit {
   public selectedWaypoint: String | undefined = undefined;
   public showModal: boolean = false;
   public waypointForm: FormGroup;
-  public types: string[] = ['Summit', 'Lake', 'River', 'Waterfall', 'Fountain'];
+  public types: string[] = ['Summit', 'Lake', 'River', 'Waterfall', 'Fountain',
+    'Cave', 'Risk', 'Valley', 'Panoramic view', 'Wildlife observation', 'Parking', 'Cliff', 'Shelter', 'Other'];
 
   constructor(
     private router: Router,
     private waypointService: WaypointService,
     private authenticationService: AuthenticationBasicService,
     private modalService: NgbModal
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.waypoint = new Waypoint();
@@ -48,7 +50,7 @@ export class WaypointCreateComponent implements OnInit {
   loadWaypointList() {
     this.waypointService
       .getPage({
-        sort: { title: 'ASC' },
+        sort: {title: 'ASC'},
       })
       .subscribe((waypoints: PagedResourceCollection<Waypoint>) => {
         this.waypoints = waypoints.resources.sort((a, b) =>
@@ -59,15 +61,15 @@ export class WaypointCreateComponent implements OnInit {
 
   open(content) {
     this.modalService
-      .open(content, { ariaLabelledBy: 'modal-basic-title' })
+      .open(content, {ariaLabelledBy: 'modal-basic-title'})
       .result.then(
-        (result) => {
-          this.closeResult = `Closed with: ${result}`;
-        },
-        (reason) => {
-          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-        }
-      );
+      (result) => {
+        this.closeResult = `Closed with: ${result}`;
+      },
+      (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      }
+    );
   }
 
   private getDismissReason(reason: any): string {
@@ -97,7 +99,7 @@ export class WaypointCreateComponent implements OnInit {
     this.waypoint.title = this.title?.value;
     this.waypoint.type = this.waypointForm.get('type')?.value;
     this.waypointService
-      .createResource({ body: this.waypoint })
+      .createResource({body: this.waypoint})
       .subscribe(() => {
         this.router.navigate(['/waypoints']).then();
       });
