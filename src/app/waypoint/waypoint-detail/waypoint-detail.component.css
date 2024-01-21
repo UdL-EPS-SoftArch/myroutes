@@ -1,0 +1,11 @@
+.custom-container {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.info-text {
+  font-weight: bold;
+  color: #333;
+}

@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-12">
+    <div class="custom-container">
+      <h5 class="text-center mb-4">Waypoint Detail</h5>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <h6 class="text-muted">Waypoint Title</h6>
+          <p id="WaypointTitle" class="info-text">{{ waypoint.title }}</p>
+        </div>
+        <div class="col-md-6">
+          <h6 class="text-muted">Description</h6>
+          <p id="WaypointDescription" class="info-text">{{ waypoint.description }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <h6 class="text-muted">Waypoint Type</h6>
+          <p id="WaypointType" class="info-text">{{ waypoint.type }}</p>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-12 text-right">
+          <a [routerLink]="[waypoint.uri.endsWith('/') ? waypoint.uri.slice(0, -1) : waypoint.uri, 'edit']" class="btn btn-primary">Edit Waypoint</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
