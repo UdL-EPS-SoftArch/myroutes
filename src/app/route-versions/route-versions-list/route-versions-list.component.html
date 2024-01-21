@@ -1,1 +1,23 @@
-<p>route-versions-list works!</p>
+<div class="row">
+  <div class="card col-lg-4 col-md-6 col-sm-12 col-xs-12" *ngFor="let version of routeVersions">
+    <div class="card-block">
+      <div class="card-header row m-1 text-center" >
+        <h5>Route Version</h5>
+      </div>
+      <div class="card-body row m-1">
+        <div class="col-md-6 p-3">
+          <h6 class="card-subtitle text-muted">CreatedBy</h6>
+          <p class="card-text">{{version.createdBy?.username}}</p>
+        </div>
+        <div class="col-md-6 p-3">
+          <h6 class="card-subtitle text-muted">Creation date</h6>
+          <p class="card-text">{{version.creationDate | date: 'dd/MM/yyyy HH:mm:ss'}}</p>
+        </div>
+        <div class="col-md-6 p-3">
+          <h6 class="card-subtitle text-muted">Title</h6>
+          <p class="card-text">{{version.title}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
