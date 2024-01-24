@@ -8,7 +8,7 @@ export class Waypoint extends Resource {
   title: string;
   description: string;
   type: string;
-  coordinate: Coordinate;
+  location: Coordinate;
   _links: any;
 
   constructor(values: object = {}) {

@@ -7,6 +7,7 @@ import {FormControl, FormGroup, Validators,} from '@angular/forms';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {PagedResourceCollection} from '@lagoshny/ngx-hateoas-client';
 import {Coordinate} from "../../coordinate/coordinate.entity";
+import {CoordinateService} from "../../coordinate/coordinate.service";
 
 @Component({
   selector: 'app-waypoint-create',
@@ -16,7 +17,7 @@ import {Coordinate} from "../../coordinate/coordinate.entity";
 export class WaypointCreateComponent implements OnInit {
   closeResult = '';
   public isModalSaved: boolean = false;
-  public location: Coordinate = new Coordinate();
+  public coordinates: Coordinate[] = [];
   public waypoints: Waypoint[] = [];
   public waypoint: Waypoint;
   public titleInput: string = '';
@@ -24,13 +25,15 @@ export class WaypointCreateComponent implements OnInit {
   public showModal: boolean = false;
   public waypointForm: FormGroup;
   public types: string[] = ['Summit', 'Lake', 'River', 'Waterfall', 'Fountain',
-    'Cave', 'Risk', 'Valley', 'Panoramic view', 'Wildlife observation', 'Parking', 'Cliff', 'Shelter', 'Other'];
+    'Cave', 'Risk', 'Valley', 'Panoramic view', 'Wildlife observation', 'Parking',
+    'Cliff', 'Shelter', 'Other'];
 
   constructor(
     private router: Router,
     private waypointService: WaypointService,
     private authenticationService: AuthenticationBasicService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private coordinateService: CoordinateService
   ) {
   }
 
@@ -42,9 +45,17 @@ export class WaypointCreateComponent implements OnInit {
       ]),
       description: new FormControl(this.titleInput),
       type: new FormControl(''),
+      locate: new FormControl(''),
     });
-
+    this.loadCoordinateList();
     this.loadWaypointList();
+  }
+
+  loadCoordinateList() {
+    this.coordinateService.getPage({ pageParams:  { size: 10 }, sort: { name: 'ASC' } })
+      .subscribe((coordinates: PagedResourceCollection<Coordinate>) => {
+        this.coordinates = coordinates.resources;
+      });
   }
 
   loadWaypointList() {
@@ -59,34 +70,6 @@ export class WaypointCreateComponent implements OnInit {
       });
   }
 
-  open(content) {
-    this.modalService
-      .open(content, {ariaLabelledBy: 'modal-basic-title'})
-      .result.then(
-      (result) => {
-        this.closeResult = `Closed with: ${result}`;
-      },
-      (reason) => {
-        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-      }
-    );
-  }
-
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
-  }
-
-  saveAndClose(modal: any) {
-    this.isModalSaved = true;
-    modal.close('Save click');
-  }
-
   get title() {
     return this.waypointForm.get('title');
   }
@@ -98,6 +81,9 @@ export class WaypointCreateComponent implements OnInit {
   onSubmit(): void {
     this.waypoint.title = this.title?.value;
     this.waypoint.type = this.waypointForm.get('type')?.value;
+    this.waypoint.description = this.description?.value;
+    this.waypoint.location = this.waypointForm.get('locate')?.value;
+
     this.waypointService
       .createResource({body: this.waypoint})
       .subscribe(() => {
