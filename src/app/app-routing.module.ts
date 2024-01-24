@@ -27,6 +27,7 @@ import {WaypointListComponent} from "./waypoint/waypoint-list/waypoint-list.comp
 import {WaypointDetailComponent} from "./waypoint/waypoint-detail/waypoint-detail.component";
 import {WaypointEditComponent} from "./waypoint/waypoint-edit/waypoint-edit.component";
 import {WaypointDeleteComponent} from "./waypoint/waypoint-delete/waypoint-delete.component";
+import {RouteVersionsDeleteComponent} from "./route-versions/route-versions-delete/route-versions-delete.component";
 
 const routes: Routes = [
   { path: 'users/create', component: UserRegisterComponent},
@@ -42,6 +43,7 @@ const routes: Routes = [
   { path: 'routes', component: RouteListComponent, canActivate: [CheckLoggedInGuard] },
 
   { path: 'route-versions-create', component: RouteVersionsCreateComponent, canActivate: [CheckIsNotAdminGuard] },
+  { path: 'route-versions/delete', component: RouteVersionsDeleteComponent, canActivate: [CheckIsNotAdminGuard] },
 
   { path: 'routeFollowed/create', component: RouteFollowedCreateComponent, canActivate: [CheckIsNotAdminGuard] },
   { path: 'routeFollowed/:id/delete', component: RouteFollowedDeleteComponent, canActivate: [CheckIsNotAdminGuard]},

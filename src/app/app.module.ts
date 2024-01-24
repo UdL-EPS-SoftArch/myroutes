@@ -48,6 +48,8 @@ import {RouteFollowedDetailComponent} from "./routeFollowed/route-followed-detai
 import { RouteVersionsCreateComponent } from './route-versions/route-versions-create/route-versions-create.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import {NgxDatatableModule} from "@swimlane/ngx-datatable";
+import { RouteVersionsListComponent } from './route-versions/route-versions-list/route-versions-list.component';
+import { RouteVersionsDeleteComponent } from './route-versions/route-versions-delete/route-versions-delete.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +80,9 @@ import {NgxDatatableModule} from "@swimlane/ngx-datatable";
     RouteFollowedEditComponent,
     RouteFollowedListComponent,
     RouteFollowedDetailComponent,
-    RouteVersionsCreateComponent
+    RouteVersionsCreateComponent,
+    RouteVersionsListComponent,
+    RouteVersionsDeleteComponent
   ],
   imports: [
     BrowserModule,
